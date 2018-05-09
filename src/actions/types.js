@@ -1,0 +1,29 @@
+// Types
+// Window size
+export const TOGGLE_MAXICON = 'TOGGLE_MAXICON';
+// Animes
+export const GET_UPDATED_ANIMES = 'GET_UPDATED_ANIMES';
+export const GET_POPULAR_ANIMES = 'GET_POPULAR_ANIMES';
+export const GET_TRENDING_ANIMES = 'GET_TRENDING_ANIMES';
+export const GET_FILTERED_ANIMES = 'GET_FILTERED_ANIMES';
+export const RESET_ANIMES = 'RESET_ANIMES';
+
+// Scheduled animes
+export const GET_SCHEDULED_ANIMES = 'GET_SCHEDULED_ANIMES';
+export const RESET_SCHEDULED_ANIMES = 'RESET_SCHEDULED_ANIMES';
+
+// Anime details
+export const GET_ANIME = 'GET_ANIME';
+export const RESET_ANIME = 'RESET_ANIME';
+// Episode
+export const GET_EPISODE_OPTIONS = 'GET_EPISODE_OPTIONS';
+export const RESET_EPISODE_OPTIONS = 'RESET_EPISODE_OPTIONS';
+// Select episode
+export const SELECT_EPISODE = 'SELECT_EPISODE';
+export const RESET_SELECTED_EPISODE = 'RESET_SELECTED_EPISODE';
+// Select Video
+export const SELECT_VIDEO = 'SELECT_VIDEO';
+export const RESET_VIDEO = 'RESET_VIDEO';
+// Search suggestions
+export const GET_SUGGESTIONS = 'GET_SUGGESTIONS';
+export const RESET_SUGGESTIONS = 'RESET_SUGGESTIONS';
