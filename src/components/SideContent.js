@@ -1,5 +1,15 @@
 import React from 'react';
-import { Grid, List, Image, Card, Header } from 'semantic-ui-react';
+import {
+  Grid,
+  List,
+  Image,
+  Card,
+  Header,
+  Icon,
+  Button,
+  Popup,
+  Rating
+} from 'semantic-ui-react';
 
 const SideContent = props => {
   const { anime } = props;
@@ -12,15 +22,35 @@ const SideContent = props => {
     >
       <Card fluid>
         <Image src={anime.poster} fluid />
+        <div className="fav">
+          <Popup
+            trigger={<Button circular color="blue" icon="plus" size="mini" />}
+            content="Add to FavList?"
+            position="top left"
+            on="hover"
+            size="mini"
+          />
+        </div>
       </Card>
       <Header>{anime.info.title}</Header>
       <p>{anime.info.synopsis}</p>
       <List size="mini" relaxed>
         <List.Item>
+          Rating<List.Content floated="right">
+            <Rating
+              size="mini"
+              disabled
+              rating={anime.info.score.toFixed(1)}
+              maxRating={5}
+            />
+          </List.Content>
+        </List.Item>
+        <List.Item>
           Score<List.Content floated="right">
             {anime.info.score.toFixed(1)}/5
           </List.Content>
         </List.Item>
+
         <List.Item>
           Type<List.Content floated="right">
             {anime.info.type === 0

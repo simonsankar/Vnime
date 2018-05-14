@@ -12,10 +12,18 @@ class VideoOptions extends Component {
   componentDidUpdate(prevProps) {
     // On anime change
     if (this.props.location !== prevProps.location) {
-      this.props.selectVideo(this.props.episodeOptions[0].value);
+      // Did we have options?
+      if (this.props.episodeOptions)
+        this.props.selectVideo(this.props.episodeOptions[0].value);
+      else if (this.props.episodeOptions === false) {
+        this.props.selectVideo('error');
+      }
     }
     // On options change
-    if (this.props.episodeOptions !== prevProps.episodeOptions) {
+    if (
+      this.props.episodeOptions !== prevProps.episodeOptions &&
+      this.props.episodeOptions[0]
+    ) {
       this.props.selectVideo(this.props.episodeOptions[0].value);
     }
   }
@@ -28,7 +36,7 @@ class VideoOptions extends Component {
     const { episodeOptions } = this.props;
     return (
       <div className="inline-block">
-        {episodeOptions !== null ? (
+        {episodeOptions !== null && episodeOptions !== false ? (
           <Dropdown
             size="small"
             selection

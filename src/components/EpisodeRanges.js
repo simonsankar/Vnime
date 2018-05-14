@@ -8,25 +8,22 @@ import {
 import { selectEpisode, resetSelectedVideo } from '../actions/selectEpisode';
 import _ from 'lodash';
 
-import { Accordion, Icon, Label } from 'semantic-ui-react';
+import { Accordion, Label } from 'semantic-ui-react';
 import Episode from './Episode';
+
 class EpisodeRanges extends Component {
   state = { activeIndex: 0 };
 
-  handleClick = (e, titleProps) => {
-    const { index } = titleProps;
-    const { activeIndex } = this.state;
-    const newIndex = index;
-
-    this.setState({ activeIndex: newIndex });
-  };
+  handleClick(index) {
+    this.setState({ activeIndex: index });
+  }
   // Splits episodes array
   makeChunks(arr) {
     const chunks = _.chunk(arr, 50);
     return chunks;
   }
   // Render range titles
-  renderAccTitle(episodes) {
+  renderAccTitle(slug, episodes) {
     const { activeIndex } = this.state;
     const titles = this.makeChunks(episodes).map((range, index) => {
       return (
@@ -35,11 +32,14 @@ class EpisodeRanges extends Component {
           className={
             activeIndex === index ? 'label-black-selected' : 'label-black'
           }
+          slug={slug}
+          range={range}
+          key={index + slug}
           basic
           size="tiny"
           active={activeIndex === index}
           index={index}
-          onClick={this.handleClick}
+          onClick={() => this.handleClick(index)}
         >
           {`${range[0].info.episode}-${range[range.length - 1].info.episode}`}
         </Accordion.Title>
@@ -51,15 +51,20 @@ class EpisodeRanges extends Component {
   renderAccContent(slug, episodes) {
     const { activeIndex } = this.state;
     const ranges = this.makeChunks(episodes).map((range, index) => {
+      // Autoselect first episode from first range
+      if (index === activeIndex) {
+        this.props.resetSelectedVideo();
+        this.props.selectEpisode(range[0].info.episode, range[0]);
+        const episodeURL = `/${slug}/${range[0].info.episode}`;
+        this.props.getEpisodeOptions(episodeURL);
+      }
       return (
-        <Accordion.Content className="fade-in" active={activeIndex === index}>
+        <Accordion.Content
+          key={index + slug + 'c'}
+          className="fade-in"
+          active={activeIndex === index}
+        >
           {range.map((episode, index) => {
-            if (index === 0) {
-              this.props.resetSelectedVideo();
-              this.props.selectEpisode(index, episode);
-              const episodeURL = `/${slug}/${episode.info.episode}`;
-              this.props.getEpisodeOptions(episodeURL);
-            }
             return (
               <Episode
                 className="fade-in"
@@ -78,11 +83,9 @@ class EpisodeRanges extends Component {
 
   render() {
     const { episodes, slug } = this.props;
-    const { activeIndex } = this.state;
-
     return (
       <Accordion>
-        {episodes ? this.renderAccTitle(episodes) : ''}
+        {episodes ? this.renderAccTitle(slug, episodes) : ''}
         {episodes ? this.renderAccContent(slug, episodes) : ''}
       </Accordion>
     );

@@ -22,7 +22,7 @@ class EpisodeList extends Component {
               episodes.map((episode, index) => {
                 if (index === 0) {
                   this.props.resetSelectedVideo();
-                  this.props.selectEpisode(index, episode);
+                  this.props.selectEpisode(episode.info.episode, episode);
                   const episodeURL = `/${slug}/${episode.info.episode}`;
                   this.props.getEpisodeOptions(episodeURL);
                 }
@@ -38,7 +38,7 @@ class EpisodeList extends Component {
             ) : episodes.length > 50 ? (
               <EpisodeRanges slug={slug} episodes={episodes} />
             ) : (
-              ''
+              'No episodes available :/'
             )}
           </Segment>
         </Grid>

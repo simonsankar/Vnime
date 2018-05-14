@@ -18,6 +18,7 @@ class Watch extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       this.props.resetAnime();
+      this.props.resetEpisodeOptions();
       const { pathname } = this.props.location;
       this.props.getAnime(pathname.replace('/watch/', ''));
     }

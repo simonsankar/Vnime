@@ -5,6 +5,7 @@ import SideBar from './components/SideBar';
 import MenuBar from './components/MenuBar';
 // Pages
 import Home from './components/Home';
+import Login from './components/Login';
 import Genres from './components/Genres';
 import Schedule from './components/Schedule';
 import Updated from './components/Updated';
@@ -21,6 +22,7 @@ class App extends Component {
           <MenuBar className="menu-bar" />
           <div className="lower-content">
             <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
             <Route path="/updated" component={Updated} />
             <Route path="/popular" component={Popular} />
             <Route path="/trending" component={Trending} />

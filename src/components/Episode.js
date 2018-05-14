@@ -11,7 +11,7 @@ import { Label } from 'semantic-ui-react';
 class Episode extends Component {
   handleEpisode(index, episode, slug) {
     this.props.resetSelectedVideo();
-    this.props.selectEpisode(index, episode);
+    this.props.selectEpisode(episode.info.episode, episode);
     const episodeURL = `/${slug}/${episode.info.episode}`;
     this.props.getEpisodeOptions(episodeURL);
   }
@@ -21,7 +21,7 @@ class Episode extends Component {
       <Label
         basic
         className={
-          this.props.selectedEpisode.index === index
+          this.props.selectedEpisode.index === episode.info.episode
             ? 'label-blue-selected'
             : 'label-blue'
         }

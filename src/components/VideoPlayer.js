@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { Segment, Dimmer, Loader } from 'semantic-ui-react';
+
 class VideoPlayer extends Component {
   render() {
     const { selectedVideo } = this.props;
@@ -18,6 +20,8 @@ class VideoPlayer extends Component {
             src={selectedVideo}
             frameBorder="0"
           />
+        ) : selectedVideo === 'error' ? (
+          'No video :('
         ) : (
           <Dimmer active inverted>
             <Loader size="huge">Loading Video...</Loader>

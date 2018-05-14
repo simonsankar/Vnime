@@ -5,7 +5,7 @@ const episodeOptions = (state = null, action) => {
     case GET_EPISODE_OPTIONS:
       if (action.error === true) {
         console.log('Error:', action.error, action.payload.message);
-        return null;
+        return false;
       } else {
         console.log('Episode Options:', action.payload);
         return action.payload;

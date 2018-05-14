@@ -8,7 +8,7 @@ import { Search, Image } from 'semantic-ui-react';
 
 const customRender = ({ title, url, img, year, type }) => {
   return (
-    <Link to={url} className="result-wrapper" key={url}>
+    <Link to={url} className="fade-in result-wrapper" key={url}>
       <Image className="result-image" src={img} size="mini" floated="left" />
       <strong>{title}</strong>
       {'\n'}
@@ -27,6 +27,7 @@ class SearchBar extends Component {
   resetComponent = () => {
     this.setState({ searchTerm: '' });
     this.setState({ isLoading: false });
+    this.props.resetSuggestions();
   };
   // Debouncec func
   getResults = _.debounce(value => {

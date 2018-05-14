@@ -17,7 +17,7 @@ export const getUpdatedAnimes = () => {
 export const getPopularAnimes = () => {
   const request = Masterani.getPopularAnimes();
   return {
-    type: GET_UPDATED_ANIMES,
+    type: GET_POPULAR_ANIMES,
     payload: request
   };
 };

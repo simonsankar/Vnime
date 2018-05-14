@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { toggleMaxIcon } from '../actions/toggleMaxIcon';
 import { connect } from 'react-redux';
+
 import { Menu } from 'semantic-ui-react';
 // const ipcRenderer = window.require('electron').ipcRenderer;
 const remote = window.require('electron').remote;

@@ -13,7 +13,7 @@ let mainWindow;
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    minWidth: 820,
+    minWidth: 845,
     minHeight: 570,
     width: 975,
     height: 650,

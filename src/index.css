@@ -15,6 +15,10 @@ h5,
 h6 {
   font-family: 'Play', sans-serif !important;
 }
+/* btn */
+.ui.button {
+  font-family: 'Play' !important;
+}
 
 /* CARD */
 .card-no-border {
@@ -113,8 +117,30 @@ h6 {
   cursor: -webkit-grabbing;
   -webkit-app-region: drag !important;
 }
-
+/* FAV button */
+.fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.fav > button {
+  margin: 0 !important;
+}
 /* HEADER */
+.header-main {
+  font-size: 75px !important;
+  font-weight: 500 !important;
+}
+.header-row {
+  background-color: #2f7aac;
+  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
+    0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
+.header-row-sec {
+  background-color: #333;
+  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
+    0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
 .header-section {
   padding-left: 1rem !important;
   font-family: 'Play' !important;
@@ -127,17 +153,22 @@ h6 {
   display: block;
   margin: 10px 0 0 3px;
 }
-.header-main {
-  font-size: 75px !important;
-  font-weight: 500 !important;
+.header-section-sec {
+  padding-left: 1rem !important;
+  font-family: 'Play' !important;
 }
-.header-row {
-  background-color: #2f7aac;
-  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
-    0 2px 10px 0 rgba(34, 36, 38, 0.15);
+.header-section-sec::after {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: #0a64a0;
+  display: block;
+  margin: 5px 0 0 3px;
 }
-.ui.header {
-  font-family: 'Play';
+
+.ui.header,
+.header {
+  font-family: 'Play' !important;
 }
 
 /* HEIGHT UTIL */
@@ -187,14 +218,14 @@ h6 {
   font-weight: 400;
   line-height: 1;
 }
-.home {
+.page {
   height: 100vh;
   /* Combat lowering the main content padding */
   margin-top: -54px;
   position: relative;
   padding: 0;
 }
-.home-primary {
+.page-primary {
   padding: 0;
   margin: 0 !important;
   height: 100%;
@@ -206,7 +237,7 @@ h6 {
   left: 0;
   clip-path: polygon(0 0, 100% 0%, 100% 42%, 0 84%);
 }
-.home-secondary {
+.page-secondary {
   padding: 0;
   margin: 0 !important;
   height: 100%;
@@ -218,27 +249,37 @@ h6 {
   clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
 }
 
-.home-header {
+.page-header {
   margin-left: 18px;
   text-align: center;
   color: #fff;
   font-size: 45px !important;
   position: absolute;
-  top: 20%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.home-header > h1 {
+.page-header > h1 {
   font-family: 'Play' !important;
   font-weight: 400 !important;
   letter-spacing: 36px;
 }
-.home-header::after {
+.page-header::after {
   content: '';
   width: 125px;
   height: 6px;
   background: #ffffff;
   display: block;
+}
+.page-content {
+  height: auto;
+  width: auto;
+  padding: 12px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -30%);
 }
 
 /* INLINE UTIL */
@@ -389,6 +430,51 @@ h6 {
 }
 .searchBar > .ui.input > input:focus {
   border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* SCHEDULE */
+.schedule-content.content {
+  padding: 0 !important;
+  position: relative;
+  height: 85px;
+}
+.schedule {
+  position: absolute;
+  top: -0.5px;
+  left: 0;
+  height: 86px;
+  width: 100%;
+  border-radius: 0.28571429rem;
+  padding: 1em 1em;
+  background-color: rgba(10, 100, 160, 0.85) !important;
+  color: #f5f5f5 !important;
+
+  clip-path: polygon(0 0, 40% 0, 60% 100%, 0% 100%);
+}
+
+.schedule > .description {
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+.schedule > .meta {
+  font-size: 10px !important;
+  color: #f5f5f5 !important;
+}
+.schedule-overlay {
+  opacity: 0 !important;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  transition: all 0.4s ease;
+}
+.content:hover > .schedule-overlay {
+  opacity: 1 !important;
 }
 /* SIDE BAR */
 .side-bar {
