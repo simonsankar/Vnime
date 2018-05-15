@@ -50,6 +50,7 @@ const Masterani = {
 
       return anime;
     });
+    // console.log(animes);
     return animes;
   },
   // Popular Animes
@@ -68,7 +69,7 @@ const Masterani = {
       };
       return anime;
     });
-    console.log(animes);
+    // console.log(animes);
     return animes;
   },
   // Trending Animes
@@ -87,7 +88,7 @@ const Masterani = {
       };
       return anime;
     });
-    console.log(animes);
+    // console.log(animes);
     return animes;
   },
   // Filtered Animes
@@ -161,9 +162,7 @@ const Masterani = {
     let i = 0,
       count = 0;
     const scheduledAnimes = [];
-    console.log(schedule);
     for (i = today; count < max; i++) {
-      console.log(i % max, ':', schedule[i % max]);
       count++;
       switch (i % max) {
         case today:
@@ -199,12 +198,11 @@ const Masterani = {
   },
   // Anime in detail
   async getAnime(id) {
-    console.log('GETTING anime:', id);
     let tempURL = FULL_URLX;
     if (id === '64') tempURL = FULL_URL;
-
     const { data } = await axios.get(`${tempURL}${anime}${id}${detailed}`);
     data.poster = `${large}${data.poster}`;
+
     if (data.wallpapers.length > 1) {
       data.wallpaper = `${wallpaper}${data.wallpapers[0].file}`;
     } else data.wallpaper = defaultWallpaper;
@@ -218,12 +216,13 @@ const Masterani = {
     const script = $('script[type="text/javascript"]', body)
       .first()
       .html();
+    // Parse script
     const ast = parseScript(script);
-
     const { statements } = ast;
     const elements =
       statements[0].declaration.declarators[0].init.properties[1].expression
         .elements;
+
     const links = elements.map((el, index) => {
       const { properties } = el;
 
@@ -247,7 +246,6 @@ const Masterani = {
       };
     });
     console.log('Mirrors', links);
-
     return links;
   },
   // Search Suggestions

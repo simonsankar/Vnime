@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 // Bars
 import SideBar from './components/SideBar';
 import MenuBar from './components/MenuBar';
 // Pages
 import Home from './components/Home';
 import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 import Genres from './components/Genres';
 import Schedule from './components/Schedule';
 import Updated from './components/Updated';
@@ -21,14 +22,17 @@ class App extends Component {
         <div className="main-content overflowY">
           <MenuBar className="menu-bar" />
           <div className="lower-content">
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/updated" component={Updated} />
-            <Route path="/popular" component={Popular} />
-            <Route path="/trending" component={Trending} />
-            <Route path="/genres" component={Genres} />
-            <Route path="/schedule" component={Schedule} />
-            <Route path="/watch/*" component={Watch} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/login" component={Login} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/updated" component={Updated} />
+              <Route path="/popular" component={Popular} />
+              <Route path="/trending" component={Trending} />
+              <Route path="/genres" component={Genres} />
+              <Route path="/schedule" component={Schedule} />
+              <Route path="/watch/*" component={Watch} />
+            </Switch>
           </div>
         </div>
       </div>

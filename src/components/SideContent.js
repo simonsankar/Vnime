@@ -5,7 +5,6 @@ import {
   Image,
   Card,
   Header,
-  Icon,
   Button,
   Popup,
   Rating
