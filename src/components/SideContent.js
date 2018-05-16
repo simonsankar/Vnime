@@ -74,17 +74,17 @@ const SideContent = props => {
         </List.Item>
         <List.Item>
           Episodes<List.Content floated="right">
-            {anime.info.episode_count}
+            {anime.info.episode_count || '???'}
           </List.Content>
         </List.Item>
         <List.Item>
           Duration<List.Content floated="right">
-            {anime.info.episode_length}
+            {anime.info.episode_length || '???'}
           </List.Content>
         </List.Item>
         <List.Item>
           Aired<List.Content floated="right">
-            {anime.info.started_airing_date}
+            {anime.info.started_airing_date || '???'}
           </List.Content>
         </List.Item>
         <List.Item>

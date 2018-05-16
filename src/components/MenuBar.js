@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-dom';
 import { bindActionCreators } from 'redux';
-import { toggleMaxIcon } from '../actions/toggleMaxIcon';
 import { connect } from 'react-redux';
+import { toggleMaxIcon } from '../actions/toggleMaxIcon';
+import { logoutUser } from '../actions/setAuth';
 
-import { Menu } from 'semantic-ui-react';
+import { Menu, Dropdown } from 'semantic-ui-react';
 // const ipcRenderer = window.require('electron').ipcRenderer;
 const remote = window.require('electron').remote;
 
@@ -25,9 +27,32 @@ class MenuBar extends Component {
     } else remote.getCurrentWindow().close();
   }
   render() {
+    const { auth, logoutUser } = this.props;
     return (
       <Menu borderless className="draggable menu-bar">
-        <Menu.Item icon="user" className="menu-btn" />
+        <Dropdown item icon="user" className="menu-btn">
+          <Dropdown.Menu>
+            {auth === null || !auth.loggedIn ? (
+              <Dropdown.Item
+                as={Link}
+                to="/login"
+                icon="sign in"
+                text="Login/SignUp"
+              />
+            ) : null}
+            {auth !== null &&
+              auth.loggedIn && (
+                <Dropdown.Item
+                  icon="sign out"
+                  text="Logout"
+                  onClick={() => logoutUser()}
+                />
+              )}
+          </Dropdown.Menu>
+        </Dropdown>
+        {auth !== null &&
+          auth.loggedIn && <Menu.Item>{auth.response.uid}</Menu.Item>}
+
         <Menu.Menu position="right">
           <Menu.Item
             className="menu-btn"
@@ -64,8 +89,8 @@ class MenuBar extends Component {
   }
 }
 
-const mapStateToProps = ({ maxIcon }) => ({ maxIcon });
+const mapStateToProps = ({ maxIcon, auth }) => ({ maxIcon, auth });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ toggleMaxIcon }, dispatch);
+  bindActionCreators({ toggleMaxIcon, logoutUser }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuBar);

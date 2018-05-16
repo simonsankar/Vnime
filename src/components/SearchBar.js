@@ -53,7 +53,7 @@ class SearchBar extends Component {
         size="mini"
         placeholder="Death Note ...maybe?"
         minCharacters={3}
-        loading={isLoading}
+        loading={searchTerm !== '' && suggestions === null ? true : false}
         results={suggestions}
         value={searchTerm}
         resultRenderer={customRender}

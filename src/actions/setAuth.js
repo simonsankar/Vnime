@@ -8,6 +8,13 @@ export const loginUser = (email, password) => {
     payload: login
   };
 };
+export const signupUser = (email, password) => {
+  const signup = auth.signup(email, password);
+  return {
+    type: USER_SIGNED_UP,
+    payload: signup
+  };
+};
 
 export const logoutUser = () => {
   auth.logout();

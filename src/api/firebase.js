@@ -10,6 +10,12 @@ export const auth = {
       .signInWithEmailAndPassword(email, password);
     return user;
   },
+  async signup(email, password) {
+    const { user } = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password);
+    return user;
+  },
   async logout() {
     firebase.auth().signOut();
   }

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { loginUser } from '../actions/setAuth';
+import { loginUser, signupUser } from '../actions/setAuth';
 
-import { Segment, Form, Button, Input } from 'semantic-ui-react';
+import { Segment, Form, Button, Input, Message } from 'semantic-ui-react';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -18,23 +18,25 @@ class LoginForm extends Component {
     if (prevProps.auth !== this.props.auth) {
       console.log(this.props.auth);
       if (this.props.auth.loggedIn) {
-        return <Redirect to="/dashboard" />;
+        console.log(this.props.history);
+        this.props.history.push('/dashboard');
       }
     }
   }
-  handleSubmit(e) {
+  handleLogin(e) {
     e.preventDefault();
-    console.log('Submitted');
+    console.log('Trying to Login User');
     const { email, password } = this.state;
     if (email.value && password.value) {
       this.props.loginUser(email.value, password.value);
-    } else {
-      if (!email.value) {
-        this.setState({ email: { value: email.value, error: true } });
-      }
-      if (!password.value) {
-        this.setState({ password: { value: password.value, error: true } });
-      }
+    }
+  }
+  handleSignUp(e) {
+    e.preventDefault();
+    console.log('Trying to SignUp User');
+    const { email, password } = this.state;
+    if (email.value && password.value) {
+      this.props.signupUser(email.value, password.value);
     }
   }
   setEmail(e) {
@@ -54,7 +56,7 @@ class LoginForm extends Component {
     const { auth } = this.props;
     return (
       <Segment className="centered-form" raised>
-        <Form onSubmit={e => this.handleSubmit(e)}>
+        <Form onSubmit={e => this.handleLogin(e)}>
           <Form.Field>
             <label>Email</label>
             <Input
@@ -78,9 +80,27 @@ class LoginForm extends Component {
               onChange={e => this.setPassword(e)}
             />
           </Form.Field>
-          {auth && <div>{auth.message}</div>}
+          {auth &&
+            auth.message && (
+              <Message size="mini" negative>
+                <p>{auth.message}</p>
+              </Message>
+            )}
+
           <Button type="submit">Login!</Button>
+          <Button
+            type="button"
+            color="green"
+            floated="right"
+            onClick={e => this.handleSignUp(e)}
+          >
+            Sign Up!
+          </Button>
         </Form>
+        <Message size="mini" info>
+          <Message.Header>No account?</Message.Header>
+          <p>Enter any email and a password and click Sign Up!</p>
+        </Message>
       </Segment>
     );
   }
@@ -88,5 +108,7 @@ class LoginForm extends Component {
 
 const mapStateToProps = ({ auth }) => ({ auth });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ loginUser }, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+  bindActionCreators({ loginUser, signupUser }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withRouter(LoginForm)
+);

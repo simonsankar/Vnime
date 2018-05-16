@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
-import LoginForm from './LoginForm';
+import UserForm from './UserForm';
 
 class Login extends Component {
   render() {
@@ -12,7 +12,7 @@ class Login extends Component {
           </div>
         </Grid>
         <Grid className="page-secondary" padded="horizontally" />
-        <LoginForm className="centered-form" />
+        <UserForm className="centered-form" />
       </div>
     );
   }

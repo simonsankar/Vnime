@@ -218,6 +218,19 @@ h6 {
   font-weight: 400;
   line-height: 1;
 }
+
+/* ITEM {Sem UI} */
+.item {
+  font-family: 'Play' !important;
+}
+.item.divider {
+  padding: 0 !important;
+  margin: 11px 0 11px 0 !important;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+/* PAGES */
 .page {
   height: 100vh;
   /* Combat lowering the main content padding */
@@ -263,6 +276,11 @@ h6 {
   font-family: 'Play' !important;
   font-weight: 400 !important;
   letter-spacing: 36px;
+}
+.page-header > h2 {
+  font-family: 'Play' !important;
+  font-weight: 300 !important;
+  letter-spacing: 26px;
 }
 .page-header::after {
   content: '';

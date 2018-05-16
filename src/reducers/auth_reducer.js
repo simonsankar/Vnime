@@ -20,6 +20,20 @@ const auth = (state = null, action) => {
           response: action.payload
         };
       }
+    case USER_SIGNED_UP:
+      if (action.error === true) {
+        console.log('Signup Error', action.payload);
+        return {
+          loggedIn: false,
+          message: action.payload.message
+        };
+      } else {
+        console.log('Signup Success', action.payload);
+        return {
+          loggedIn: true,
+          response: action.payload
+        };
+      }
     case USER_LOGGED_OUT:
       return {
         loggedIn: false

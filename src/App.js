@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 // Bars
 import SideBar from './components/SideBar';
 import MenuBar from './components/MenuBar';
