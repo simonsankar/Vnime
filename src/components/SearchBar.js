@@ -26,7 +26,6 @@ class SearchBar extends Component {
 
   resetComponent = () => {
     this.setState({ searchTerm: '' });
-    this.setState({ isLoading: false });
     this.props.resetSuggestions();
   };
   // Debouncec func
@@ -45,7 +44,7 @@ class SearchBar extends Component {
     this.resetComponent();
   };
   render() {
-    const { isLoading, searchTerm } = this.state;
+    const { searchTerm } = this.state;
     const { suggestions } = this.props;
     return (
       <Search

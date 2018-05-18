@@ -5,7 +5,7 @@ const maxIcon = (state = null, action) => {
     case TOGGLE_MAXICON:
       return action.payload;
     default:
-      return 'window maximize';
+      return state;
   }
 };
 

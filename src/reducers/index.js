@@ -5,8 +5,9 @@ import anime from './anime_reducer';
 import selectedEpisode from './selectedEpisode_reducer';
 import episodeOptions from './episodeOptions_reducer';
 import selectedVideo from './selectedVideo_reducer';
-import suggestions from './suggestions_reducer';
+import sampleAnimes from './sampleAnimes_reducer';
 import scheduledAnimes from './scheduledAnimes_reducer';
+import suggestions from './suggestions_reducer';
 
 import maxIcon from './maxIcon_reducer';
 
@@ -17,8 +18,9 @@ const rootReducer = combineReducers({
   selectedEpisode,
   episodeOptions,
   selectedVideo,
-  suggestions,
+  sampleAnimes,
   scheduledAnimes,
+  suggestions,
 
   maxIcon
 });

@@ -13,6 +13,7 @@ const FULL_URLX = `${CORSX}${BASE_URL}`;
 const updated = '/api/releases';
 const popular = '/api/anime/trending/today';
 const trending = '/api/anime/trending/now';
+const trendingBoth = '/api/anime/trending';
 const scheduled = '/anime/schedule';
 
 // Anime details
@@ -95,6 +96,40 @@ const Masterani = {
   async getTFilteredAnimes(query = 'order=score_desc&page=1') {
     const { data } = await axios.get(`${FULL_URLX}${filter}${query}`);
     return data;
+  },
+  async getPopularAndTrendingAnimes() {
+    const { data } = await axios.get(`${FULL_URLX}${trendingBoth}`);
+    const { being_watched, popular_today } = data;
+    const trending = being_watched.map((el, index) => {
+      const img = `${small}${el.poster}`;
+      const id = el.slug.substr(0, el.slug.indexOf('-'));
+      const anime = {
+        anime: {
+          poster: img,
+          title: el.title
+        },
+        url: `/watch/${id}`,
+        extra: el.total
+      };
+      return anime;
+    });
+    const popular = popular_today.map((el, index) => {
+      const img = `${small}${el.poster}`;
+      const id = el.slug.substr(0, el.slug.indexOf('-'));
+      const anime = {
+        anime: {
+          poster: img,
+          title: el.title
+        },
+        url: `/watch/${id}`,
+        extra: el.total
+      };
+      return anime;
+    });
+    return {
+      popular,
+      trending
+    };
   },
   // Scheduled Animes
   async getScheduledAnimes() {
