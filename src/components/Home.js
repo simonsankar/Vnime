@@ -7,7 +7,8 @@ import {
   resetPopularAndTrendingAnimes
 } from '../actions/getPopularAndTrendingAnimes';
 
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Divider } from 'semantic-ui-react';
+import SampleList from './SampleList';
 
 class Home extends Component {
   componentWillMount() {
@@ -17,38 +18,49 @@ class Home extends Component {
     this.props.resetPopularAndTrendingAnimes();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.sampleAnimes !== this.props.sampleAnimes) {
-      console.log(this.props.sampleAnimes);
-    }
-  }
-
   render() {
+    const { sampleAnimes } = this.props;
     return (
-      <div className="fade-in page">
-        <Grid
-          className="page-primary page-clip-backslash-top"
-          padded="horizontally"
-        >
-          <div className="page-header">
-            <h1>VNIME</h1>
-          </div>
-        </Grid>
-        <Grid
-          className="page-secondary page-clip-backslash-bottom"
-          padded="horizontally"
-        />
-        <div className="page-content">
-          <Button as={Link} to="/login" size="huge">
-            LOGIN
-          </Button>
-          oasidaoisdaoisdnaoisdnaosdnaosdnaosdnaolo Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Officia quaerat voluptates eum deserunt
-          odit voluptatum omnis labore beatae voluptatibus dolor repellendus
-          placeat quidem similique fuga, aliquam ipsa veritatis molestias?
-          Beatae.
-        </div>
-      </div>
+      <Grid className="home">
+        <Grid.Row className="home-section home-section-primary">
+          <Grid.Column>
+            <div className="home-section-header">
+              <h1>VNIME</h1>
+              <p>
+                Watch your favourite anime all day, everyday, every week, every
+                June.
+              </p>
+              <Link to="/login" className="btn-clear">
+                Login | SignUp
+              </Link>
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row className="home-section home-section-secondary">
+          {sampleAnimes !== null ? (
+            <div>
+              <SampleList
+                text="Currently Popular"
+                animes={sampleAnimes.popular}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          <Divider />
+          {sampleAnimes !== null ? (
+            <div>
+              <SampleList
+                text="Currently Trending"
+                animes={sampleAnimes.trending}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+        </Grid.Row>
+      </Grid>
     );
   }
 }
@@ -60,4 +72,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

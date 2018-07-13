@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { toggleMaxIcon } from '../actions/toggleMaxIcon';
-import { logoutUser } from '../actions/setAuth';
+import { getUser } from '../actions/getUser';
 
-import { Menu, Dropdown } from 'semantic-ui-react';
 import { TitleBar } from 'react-desktop';
 // const ipcRenderer = window.require('electron').ipcRenderer;
 const remote = window.require('electron').remote;
@@ -19,6 +17,10 @@ class MenuBar extends Component {
     if (this.props.isMax !== remote.getCurrentWindow().isMaximized()) {
       const isMax = remote.getCurrentWindow().isMaximized();
       this.props.toggleMaxIcon(isMax);
+    }
+    if (prevProps.auth !== this.props.auth && this.props.auth.loggedIn) {
+      const { uid } = this.props.auth.response;
+      this.props.getUser(uid);
     }
   }
 
@@ -37,29 +39,16 @@ class MenuBar extends Component {
     }
   };
 
-  handleTitleBarClick(key) {
-    const isMax = remote.getCurrentWindow().isMaximized();
-    console.log(key, isMax);
-    if (key === 'minimize') remote.getCurrentWindow().minimize();
-    else if (key === 'maximize') {
-      this.props.toggleMaxIcon(true);
-      remote.getCurrentWindow().maximize();
-    } else if (key === 'restore') {
-      this.props.toggleMaxIcon(false);
-      remote.getCurrentWindow().restore();
-    } else remote.getCurrentWindow().close();
-  }
-
   render() {
-    const { auth, logoutUser } = this.props;
+    const { auth, user } = this.props;
     return (
       <TitleBar
-        title={auth ? auth.response.uid : 'Hi new unregistered user :)'}
+        title="Hi user"
         className="menu-bar"
         controls
         isMaximized={this.props.maxIcon}
         theme="dark"
-        background="#08568a"
+        background="#38597c"
         onCloseClick={this.close}
         onMinimizeClick={this.minimize}
         onMaximizeClick={this.toggleMaximize}
@@ -69,65 +58,11 @@ class MenuBar extends Component {
   }
 }
 
-const mapStateToProps = ({ maxIcon, auth }) => ({ maxIcon, auth });
+const mapStateToProps = ({ maxIcon, auth, user }) => ({ maxIcon, auth, user });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ toggleMaxIcon, logoutUser }, dispatch);
+  bindActionCreators({ toggleMaxIcon, getUser }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuBar);
-
-//  <Menu borderless className="draggable menu-bar">
-//         <Dropdown item icon="user" className="menu-btn">
-//           <Dropdown.Menu>
-//             {auth === null || !auth.loggedIn ? (
-//               <Dropdown.Item
-//                 as={Link}
-//                 to="/login"
-//                 icon="sign in"
-//                 text="Login/SignUp"
-//               />
-//             ) : null}
-//             {auth !== null &&
-//               auth.loggedIn && (
-//                 <Dropdown.Item
-//                   icon="sign out"
-//                   text="Logout"
-//                   onClick={() => logoutUser()}
-//                 />
-//               )}
-//           </Dropdown.Menu>
-//         </Dropdown>
-//         {auth !== null &&
-//           auth.loggedIn && <Menu.Item>{auth.response.uid}</Menu.Item>}
-
-//         <Menu.Menu position="right">
-//           <Menu.Item
-//             className="menu-btn"
-//             key="minimize"
-//             icon="window minimize"
-//             onClick={() => this.handleTitleBarClick('minimize')}
-//           />
-
-//           {this.props.maxIcon ? (
-//             <Menu.Item
-//               className="menu-btn "
-//               key="restore"
-//               icon="window restore"
-//               onClick={() => this.handleTitleBarClick('restore')}
-//             />
-//           ) : (
-//             <Menu.Item
-//               className="menu-btn"
-//               key="maximize"
-//               icon="window maximize"
-//               onClick={() => this.handleTitleBarClick('maximize')}
-//             />
-//           )}
-
-//           <Menu.Item
-//             className="menu-btn menu-btn-red"
-//             key="close"
-//             icon="x"
-//             onClick={() => this.handleTitleBarClick('close')}
-//           />
-//         </Menu.Menu>
-//       </Menu>
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MenuBar);

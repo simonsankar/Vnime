@@ -6,7 +6,7 @@ const AnimeItem = ({ anime }) => {
   return (
     <Grid.Column mobile={5} tablet={5} computer={3} className="fade-in">
       <Card fluid as={Link} to={anime.url} className="card-no-border">
-        <Image src={anime.anime.poster} fluid />
+        <Image rounded src={anime.anime.poster} fluid />
         {anime.episode && (
           <div className="card-episodes">
             <span>EP {anime.episode}</span>

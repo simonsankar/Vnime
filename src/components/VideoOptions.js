@@ -8,6 +8,11 @@ import { Dropdown } from 'semantic-ui-react';
 class VideoOptions extends Component {
   componentDidMount() {
     this.props.resetVideo();
+    if (this.props.episodeOptions)
+      this.props.selectVideo(this.props.episodeOptions[0].value);
+    else if (this.props.episodeOptions === false) {
+      this.props.selectVideo(false);
+    }
   }
   componentDidUpdate(prevProps) {
     // On anime change
@@ -16,7 +21,7 @@ class VideoOptions extends Component {
       if (this.props.episodeOptions)
         this.props.selectVideo(this.props.episodeOptions[0].value);
       else if (this.props.episodeOptions === false) {
-        this.props.selectVideo('error');
+        this.props.selectVideo(false);
       }
     }
     // On options change
@@ -60,5 +65,8 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({ selectVideo, resetVideo }, dispatch);
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(VideoOptions)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(VideoOptions)
 );

@@ -6,9 +6,10 @@ import {
   resetScheduledAnimes
 } from '../actions/getScheduledAnimes';
 
-import { Grid, Dimmer, Loader } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import HeaderBar from './HeaderBar';
 import ScheduleList from './ScheduleList';
+import Loading from './Loading';
 
 class Schedule extends Component {
   componentDidMount() {
@@ -44,9 +45,7 @@ class Schedule extends Component {
             {this.renderScheduleLists(scheduledAnimes)}
           </div>
         ) : (
-          <Dimmer active>
-            <Loader size="massive">Fetching Schedule...</Loader>
-          </Dimmer>
+          <Loading />
         )}
       </div>
     );
@@ -57,4 +56,7 @@ const mapStateToProps = ({ scheduledAnimes }) => ({ scheduledAnimes });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ getScheduledAnimes, resetScheduledAnimes }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Schedule);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Schedule);

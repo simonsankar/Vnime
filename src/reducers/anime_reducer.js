@@ -4,7 +4,7 @@ const anime = (state = null, action) => {
   switch (action.type) {
     case GET_ANIME:
       if (action.error === true) {
-        console.log('Error:', action.error);
+        console.log('Anime get Error:', action.error);
         return false;
       } else {
         console.log('No error/ Anime:', action.payload);

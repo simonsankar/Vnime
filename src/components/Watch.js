@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAnime, resetAnime } from '../actions/getAnime';
 import { resetEpisodeOptions } from '../actions/getEpisodeOptions';
+import { resetVideo } from '../actions/selectVideo';
 import { Grid, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import Hero from './Hero';
 import SideContent from './SideContent';
@@ -17,6 +18,7 @@ class Watch extends Component {
   }
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
+      this.props.resetVideo();
       this.props.resetAnime();
       this.props.resetEpisodeOptions();
       const { pathname } = this.props.location;
@@ -24,6 +26,7 @@ class Watch extends Component {
     }
   }
   componentWillUnmount() {
+    this.props.resetVideo();
     this.props.resetAnime();
     this.props.resetEpisodeOptions();
   }
@@ -52,6 +55,8 @@ class Watch extends Component {
               </Grid.Column>
             </Grid>
           </div>
+        ) : anime === false ? (
+          <div>Error</div>
         ) : (
           <Dimmer active>
             <Loader size="huge" />
@@ -64,5 +69,13 @@ class Watch extends Component {
 
 const mapStateToProps = ({ anime }) => ({ anime });
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getAnime, resetAnime, resetEpisodeOptions }, dispatch);
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Watch));
+  bindActionCreators(
+    { getAnime, resetAnime, resetEpisodeOptions, resetVideo },
+    dispatch
+  );
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Watch)
+);

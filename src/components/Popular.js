@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getPopularAnimes, resetAnimes } from '../actions/getAnimes';
-import { Grid, Dimmer, Loader } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 import HeaderBar from './HeaderBar';
 import AnimeList from './AnimeList';
+import Loading from './Loading';
 
 class Popular extends Component {
   componentDidMount() {
@@ -26,9 +27,7 @@ class Popular extends Component {
             </Grid.Row>
           </Grid>
         ) : (
-          <Dimmer active>
-            <Loader size="massive">Fetching Animes...</Loader>
-          </Dimmer>
+          <Loading />
         )}
       </div>
     );
@@ -38,4 +37,7 @@ class Popular extends Component {
 const mapStateToProps = ({ animes }) => ({ animes });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ getPopularAnimes, resetAnimes }, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(Popular);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Popular);

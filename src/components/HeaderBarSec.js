@@ -5,7 +5,11 @@ const HeaderBarSec = ({ text }) => {
   return (
     <Grid.Row className="header-row-sec">
       <Grid.Column>
-        <Header className="header-section-sec" inverted size="medium">
+        <Header
+          className="header-section header-section-secondary"
+          inverted
+          size="medium"
+        >
           {text}
         </Header>
       </Grid.Column>

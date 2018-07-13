@@ -8,7 +8,7 @@ class VideoPlayer extends Component {
     const { selectedVideo } = this.props;
     return (
       <Segment style={{ height: '65vh' }}>
-        {selectedVideo !== null ? (
+        {selectedVideo !== false ? (
           <iframe
             className="fade-in"
             title={selectedVideo}
@@ -20,12 +20,12 @@ class VideoPlayer extends Component {
             src={selectedVideo}
             frameBorder="0"
           />
-        ) : selectedVideo === 'error' ? (
-          'No video :('
-        ) : (
+        ) : selectedVideo === null ? (
           <Dimmer active inverted>
             <Loader size="huge">Loading Video...</Loader>
           </Dimmer>
+        ) : (
+          'No video :('
         )}
       </Segment>
     );
@@ -34,4 +34,7 @@ class VideoPlayer extends Component {
 
 const mapStateToProps = ({ selectedVideo }) => ({ selectedVideo });
 
-export default connect(mapStateToProps, null)(VideoPlayer);
+export default connect(
+  mapStateToProps,
+  null
+)(VideoPlayer);

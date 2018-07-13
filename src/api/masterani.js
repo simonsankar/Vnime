@@ -101,7 +101,7 @@ const Masterani = {
     const { data } = await axios.get(`${FULL_URLX}${trendingBoth}`);
     const { being_watched, popular_today } = data;
     const trending = being_watched.map((el, index) => {
-      const img = `${small}${el.poster}`;
+      const img = `${medium}${el.poster}`;
       const id = el.slug.substr(0, el.slug.indexOf('-'));
       const anime = {
         anime: {
@@ -114,7 +114,7 @@ const Masterani = {
       return anime;
     });
     const popular = popular_today.map((el, index) => {
-      const img = `${small}${el.poster}`;
+      const img = `${medium}${el.poster}`;
       const id = el.slug.substr(0, el.slug.indexOf('-'));
       const anime = {
         anime: {
@@ -234,7 +234,7 @@ const Masterani = {
   // Anime in detail
   async getAnime(id) {
     let tempURL = FULL_URLX;
-    if (id === '64') tempURL = FULL_URL;
+    if (id === 64) tempURL = FULL_URL;
     const { data } = await axios.get(`${tempURL}${anime}${id}${detailed}`);
     data.poster = `${large}${data.poster}`;
 
