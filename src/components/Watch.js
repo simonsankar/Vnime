@@ -5,12 +5,14 @@ import { connect } from 'react-redux';
 import { getAnime, resetAnime } from '../actions/getAnime';
 import { resetEpisodeOptions } from '../actions/getEpisodeOptions';
 import { resetVideo } from '../actions/selectVideo';
+
 import { Grid, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import Hero from './Hero';
 import SideContent from './SideContent';
 import EpisodeList from './EpisodeList';
 import VideoPlayer from './VideoPlayer';
 import VideoBar from './VideoBar';
+
 class Watch extends Component {
   componentDidMount() {
     const { pathname } = this.props.location;

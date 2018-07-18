@@ -7,13 +7,18 @@ Colours
   white: #f2f8fc
 */
 
+@font-face {
+  font-family: TrueLies;
+  src: url('./fonts/True Lies.ttf');
+}
+
 html,
 body {
+  font-family: 'Play', sans-serif !important;
   min-height: 100%;
   margin: 0;
   padding: 0;
   background-color: #f2f8fc;
-  font-family: 'Play', sans-serif !important;
   overflow-x: hidden;
 }
 h1,
@@ -157,9 +162,9 @@ h6 {
   width: 400px;
   height: auto;
   position: absolute !important;
-  top: 50%;
+  top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -55%);
 }
 
 /* DIVIDE */
@@ -190,6 +195,7 @@ h6 {
 }
 /* HEADER */
 .header-main {
+  /*Home VNIME*/
   font-size: 75px !important;
   font-weight: 500 !important;
 }
@@ -203,9 +209,20 @@ h6 {
   box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
     0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
-
+.header-row-dash {
+  height: 120px;
+  background-image: linear-gradient(
+    to bottom,
+    #224264,
+    #224264 95%,
+    #dbf675 5%
+  );
+  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
+    0 2px 10px 0 rgba(34, 36, 38, 0.15);
+}
 .header-section {
   padding-left: 1rem !important;
+  padding-right: 1rem !important;
   font-weight: 500 !important;
   font-family: 'Play' !important;
 }
@@ -215,7 +232,16 @@ h6 {
 .header-section-secondary {
   color: #dbf675 !important;
 }
-
+.header-section-dash {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  color: #f2f8fc !important;
+}
+.header-section-dash > .username {
+  font-family: TrueLies !important;
+  font-size: 45px;
+  margin-left: 1rem;
+}
 .header-section-primary::after {
   content: '';
   width: 40px;
@@ -240,12 +266,10 @@ h6 {
   display: block;
   margin: 10px 0 0 3px;
 }
-
 .ui.header,
 .header {
   font-family: 'Play' !important;
 }
-
 /* HEIGHT UTIL */
 .height-big {
   min-height: 75vh;
@@ -293,7 +317,6 @@ h6 {
   font-weight: 400;
   line-height: 1;
 }
-
 /* HOME */
 .home-section {
   font-weight: 500;
@@ -321,7 +344,6 @@ h6 {
   font-size: 20px;
   margin-bottom: 35px;
 }
-
 /* ITEM {Sem UI} */
 .item {
   font-family: 'Play' !important;
@@ -333,7 +355,6 @@ h6 {
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
-
 /* INLINE UTIL */
 .inline-block {
   display: inline-block;
@@ -341,7 +362,6 @@ h6 {
 .inline {
   display: inline;
 }
-
 /* Labels */
 .label-clear {
   background-color: transparent !important;
@@ -403,7 +423,6 @@ h6 {
 .label-black-selected:hover {
   cursor: not-allowed;
 }
-
 /* MAIN CONTENT */
 .main-content {
   height: 100vh;
@@ -449,7 +468,6 @@ h6 {
   overflow-y: scroll;
   min-height: 100vh;
 }
-
 /* PAGES */
 .page {
   height: 100vh;
@@ -493,7 +511,6 @@ h6 {
 .page-clip-backslash-bottom {
   clip-path: polygon(0 25%, 100% 75%, 100% 100%, 0% 100%);
 }
-
 .page-header {
   margin-left: 18px;
   text-align: center;
@@ -531,13 +548,11 @@ h6 {
   text-align: center;
   transform: translate(-50%, -30%);
 }
-
 /* Results */
 .result > a {
   height: 100%;
   width: 100%;
-  padding-bottom: 40px;
-  /* color: #2b2b2b !important; */
+  padding-bottom: 40px; /* color: #2b2b2b !important; */
 }
 .ui.search > .results .result .image {
   float: left;
@@ -547,7 +562,6 @@ h6 {
   height: 4em;
   border-radius: 0.25em;
 }
-
 /* SAMPLE */
 .sample {
   padding-left: 0 !important;
@@ -582,7 +596,6 @@ h6 {
 .sample-card:active + .sample-line {
   width: 90%;
 }
-
 .sample-header {
   font-weight: 200;
 }
@@ -594,7 +607,6 @@ h6 {
   background-color: #dbf675;
   display: block;
 }
-
 /* SEARCH BAR */
 .searchBar > div {
   max-width: 185px !important;
@@ -613,7 +625,6 @@ h6 {
 .searchBar > .ui.input > input:focus {
   border-color: rgba(255, 255, 255, 0.7);
 }
-
 /* SCHEDULE */
 .schedule-content.content {
   padding: 0 !important;
@@ -630,10 +641,8 @@ h6 {
   padding: 1em 1em;
   background-color: rgba(56, 89, 124, 0.85) !important;
   color: #f2f8fc !important;
-
   clip-path: polygon(0 0, 40% 0, 60% 100%, 0% 100%);
 }
-
 .schedule > .description {
   width: 130px;
   white-space: nowrap;
@@ -676,17 +685,14 @@ h6 {
   margin-top: -200px;
   margin-bottom: 1rem;
 }
-
 /* ANIMATIONS */
-
 /* Fade in */
 .fade-in {
   animation: fade-in ease 1s;
   animation-delay: 0.3s;
   animation-iteration-count: 1;
   transform-origin: 50% 50%;
-  animation-fill-mode: forwards; /*when the spec is finished*/
-
+  animation-fill-mode: forwards; /* when the spec is finished */
   opacity: 0;
   opacity: 1\9;
 }

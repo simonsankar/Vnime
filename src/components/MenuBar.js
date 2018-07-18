@@ -40,10 +40,9 @@ class MenuBar extends Component {
   };
 
   render() {
-    const { auth, user } = this.props;
     return (
       <TitleBar
-        title="Hi user"
+        title=" "
         className="menu-bar"
         controls
         isMaximized={this.props.maxIcon}
@@ -58,7 +57,7 @@ class MenuBar extends Component {
   }
 }
 
-const mapStateToProps = ({ maxIcon, auth, user }) => ({ maxIcon, auth, user });
+const mapStateToProps = ({ maxIcon }) => ({ maxIcon });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ toggleMaxIcon, getUser }, dispatch);
 

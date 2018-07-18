@@ -9,7 +9,6 @@
     "cheerio": "^1.0.0-rc.2",
     "ent": "^2.2.0",
     "firebase": "^5.0.2",
-    "grommet-css": "^1.6.0",
     "lodash": "^4.17.10",
     "react": "^16.3.1",
     "react-desktop": "^0.3.5",
@@ -19,6 +18,7 @@
     "react-scripts": "1.1.4",
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.79.1",
     "shift-parser": "^5.2.4"

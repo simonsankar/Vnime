@@ -19,7 +19,7 @@ class Home extends Component {
   }
 
   render() {
-    const { sampleAnimes } = this.props;
+    const { sampleAnimes, auth } = this.props;
     return (
       <Grid className="home">
         <Grid.Row className="home-section home-section-primary">
@@ -30,9 +30,15 @@ class Home extends Component {
                 Watch your favourite anime all day, everyday, every week, every
                 June.
               </p>
-              <Link to="/login" className="btn-clear">
-                Login | SignUp
-              </Link>
+              {auth && auth.loggedIn ? (
+                <Link to="/dashboard" className="btn-clear">
+                  Dashboard
+                </Link>
+              ) : (
+                <Link to="/login" className="btn-clear">
+                  Login | SignUp
+                </Link>
+              )}
             </div>
           </Grid.Column>
         </Grid.Row>
@@ -40,10 +46,7 @@ class Home extends Component {
         <Grid.Row className="home-section home-section-secondary">
           {sampleAnimes !== null ? (
             <div>
-              <SampleList
-                text="Currently Popular"
-                animes={sampleAnimes.popular}
-              />
+              <SampleList text="Popular Today" animes={sampleAnimes.popular} />
             </div>
           ) : (
             ''
@@ -52,7 +55,7 @@ class Home extends Component {
           {sampleAnimes !== null ? (
             <div>
               <SampleList
-                text="Currently Trending"
+                text="Trending Today"
                 animes={sampleAnimes.trending}
               />
             </div>
@@ -65,7 +68,7 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = ({ sampleAnimes }) => ({ sampleAnimes });
+const mapStateToProps = ({ sampleAnimes, auth }) => ({ sampleAnimes, auth });
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     { getPopularAndTrendingAnimes, resetPopularAndTrendingAnimes },

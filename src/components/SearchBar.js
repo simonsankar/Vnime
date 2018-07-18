@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getSuggestions, resetSuggestions } from '../actions/getSuggestions';
 import _ from 'lodash';
+import { getSuggestions, resetSuggestions } from '../actions/getSuggestions';
+
 import { Search, Image } from 'semantic-ui-react';
 
 const customRender = ({ title, url, img, year, type }) => {
@@ -67,4 +68,7 @@ const mapStateToProps = ({ suggestions }) => ({ suggestions });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ getSuggestions, resetSuggestions }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBar);

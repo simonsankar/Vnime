@@ -1,17 +1,35 @@
 import { CREATE_USER, GET_USER, DELETE_USER } from './types';
-import { db } from '../api/firebase';
+import { usersRef } from '../api/firebase';
 
-export const createUser = (id, username) => {
-  const request = db.createUser(id, username);
-  return {
-    type: CREATE_USER,
-    payload: request
-  };
+// Create new user
+export const createUser = (id, username) => dispatch => {
+  usersRef.child(id).set({ username });
 };
-export const getUser = id => {
-  const request = db.getUser(id);
-  return {
-    type: GET_USER,
-    payload: request
-  };
+// Get user
+export const getUser = id => dispatch => {
+  usersRef.child(id).on('value', snapshot => {
+    dispatch({
+      type: GET_USER,
+      payload: snapshot.val()
+    });
+  });
+};
+
+// Add anime to user
+export const addAnimeToUser = (id, anime) => dispatch => {
+  usersRef
+    .child(id)
+    .child('favlist')
+    .child(anime.info.id)
+    .set(anime);
+};
+
+// Check if anime exists
+export const isAnimeAdded = (id, anime) => dispatch => {
+  const anime = usersRef
+    .child(id)
+    .child('favlist')
+    .child(id);
+  if (anime !== null) return true;
+  return false;
 };

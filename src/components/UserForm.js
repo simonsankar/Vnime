@@ -1,114 +1,86 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { loginUser, signupUser } from '../actions/setAuth';
 
-import { Segment, Form, Button, Input, Message } from 'semantic-ui-react';
+import { Grid, Segment, Message, Button } from 'semantic-ui-react';
+import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
 
-class LoginForm extends Component {
+class UserForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: { value: '', error: false },
-      password: { value: '', error: false }
+      loginForm: true
     };
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.auth !== this.props.auth) {
-      console.log(this.props.auth);
-      if (this.props.auth.loggedIn) {
-        console.log(this.props.history);
-        this.props.history.push('/dashboard');
-      }
-    }
+  toggleForm() {
+    const login = this.state.loginForm;
+    this.setState({ loginForm: !login });
   }
-  handleLogin(e) {
-    e.preventDefault();
-    console.log('Trying to Login User');
-    const { email, password } = this.state;
-    if (email.value && password.value) {
-      this.props.loginUser(email.value, password.value);
-    }
-  }
-  handleSignUp(e) {
-    e.preventDefault();
-    console.log('Trying to SignUp User');
-    const { email, password } = this.state;
-    if (email.value && password.value) {
-      this.props.signupUser(email.value, password.value);
-    }
-  }
-  setEmail(e) {
-    const value = e.target.value;
-    if (value.length < 3) {
-      this.setState({ email: { value: value, error: true } });
-    } else this.setState({ email: { value: value, error: false } });
-  }
-  setPassword(e) {
-    const value = e.target.value;
-    if (value.length < 6) {
-      this.setState({ password: { value: value, error: true } });
-    } else this.setState({ password: { value: value, error: false } });
-  }
-  render() {
-    const { email, password } = this.state;
-    const { auth } = this.props;
-    return (
-      <Segment className="centered-form" raised>
-        <Form onSubmit={e => this.handleLogin(e)}>
-          <Form.Field>
-            <label>Email</label>
-            <Input
-              icon="mail"
-              iconPosition="left"
-              type="email"
-              placeholder="senju4leaf@mail.com"
-              value={email.value}
-              error={email.error}
-              onChange={e => this.setEmail(e)}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <Input
-              icon="asterisk"
-              iconPosition="left"
-              type="password"
-              value={password.value}
-              error={password.error}
-              onChange={e => this.setPassword(e)}
-            />
-          </Form.Field>
-          {auth &&
-            auth.message && (
-              <Message size="mini" negative>
-                <p>{auth.message}</p>
-              </Message>
-            )}
 
-          <Button type="submit">Login!</Button>
-          <Button
-            type="button"
-            color="green"
-            floated="right"
-            onClick={e => this.handleSignUp(e)}
-          >
-            Sign Up!
-          </Button>
-        </Form>
-        <Message size="mini" info>
-          <Message.Header>No account?</Message.Header>
-          <p>Enter any email and a password and click Sign Up!</p>
-        </Message>
-      </Segment>
+  render() {
+    const { loginForm } = this.state;
+    return (
+      <div className="fade-in page">
+        <Grid
+          className="page-primary page-clip-forwardslash-top"
+          padded="horizontally"
+        >
+          <div className="page-header">
+            <h1>{loginForm ? 'Login' : 'SignUp'}</h1>
+          </div>
+        </Grid>
+        <Segment className="centered-form" raised>
+          {loginForm ? (
+            <div className="fade-in">
+              <LoginForm />
+              <Message size="mini" info>
+                <Message.Header>No account?</Message.Header>
+                <p>
+                  Then you probably might want to{' '}
+                  <Button
+                    basic
+                    color="green"
+                    compact
+                    onClick={() => this.toggleForm()}
+                    size="mini"
+                  >
+                    Sign Up!
+                  </Button>
+                </p>
+              </Message>
+            </div>
+          ) : (
+            <div className="fade-in">
+              <SignUpForm />
+              <Message size="mini" info>
+                <Message.Header>Got an account already?</Message.Header>
+                <p>
+                  Then why don't you try to{' '}
+                  <Button
+                    basic
+                    color="blue"
+                    compact
+                    onClick={() => this.toggleForm()}
+                    size="mini"
+                  >
+                    Login!
+                  </Button>
+                </p>
+              </Message>
+            </div>
+          )}
+        </Segment>
+        <Grid
+          className="page-secondary page-clip-forwardslash-bottom"
+          padded="horizontally"
+        />
+      </div>
     );
   }
 }
-
 const mapStateToProps = ({ auth }) => ({ auth });
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ loginUser, signupUser }, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(
-  withRouter(LoginForm)
-);
+
+export default connect(
+  mapStateToProps,
+  null
+)(UserForm);

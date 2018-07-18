@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Switch, Route,withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 // Bars
 import SideBar from './components/SideBar';
 import MenuBar from './components/MenuBar';
 // Pages
 import Home from './components/Home';
-import Login from './components/Login';
+import UserForm from './components/UserForm';
 import Dashboard from './components/Dashboard';
 import Genres from './components/Genres';
 import Schedule from './components/Schedule';
@@ -24,7 +24,7 @@ class App extends Component {
           <div className="lower-content">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
+              <Route path="/login" component={UserForm} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/updated" component={Updated} />
               <Route path="/popular" component={Popular} />

@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import { config } from './firebase.config';
 
 firebase.initializeApp(config);
-
+// Auth
 export const auth = {
   async login(email, password) {
     const { user } = await firebase
@@ -21,19 +21,6 @@ export const auth = {
   }
 };
 
-export const db = {
-  async createUser(id, username = 'Bob') {
-    const user = await firebase
-      .database()
-      .ref(`users/${id}`)
-      .set({ username, favlist: [] })
-      .on('value', snapshot => snapshot.val);
-  },
-  async getUser(id) {
-    const user = await firebase
-      .database()
-      .ref(`users/${id}`)
-      .on('value', snapshot => snapshot.val);
-    return user;
-  }
-};
+// Database
+const databaseRef = firebase.database().ref();
+export const usersRef = databaseRef.child('users');
