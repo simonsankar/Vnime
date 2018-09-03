@@ -41,7 +41,6 @@ class Watch extends Component {
           <div>
             {/* Hero */}
             <Hero anime={anime} />
-
             {/* Content */}
             <Grid padded="horizontally">
               <SideContent className="fade-in" anime={anime} />

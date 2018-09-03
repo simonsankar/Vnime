@@ -22,10 +22,10 @@ const detailed = '/detailed';
 
 // Searching
 const filter = 'filter?';
-const order = 'order=';
-const type = 'type=';
-const page = 'page=';
-const genres = 'genres=';
+// const order = 'order=';
+// const type = 'type=';
+// const page = 'page=';
+// const genres = 'genres=';
 const search = 'search?search=';
 
 // Image URLs
@@ -35,7 +35,7 @@ const large = `${CDN}/poster/1/`;
 const medium = `${CDN}/poster/2/`;
 const small = `${CDN}/poster/3/`;
 // Episode thumbs
-const thumbnail = `${CDN}/episodes/`;
+// const thumbnail = `${CDN}/episodes/`;
 const wallpaper = `${CDN}/wallpaper/0/`;
 const defaultWallpaper =
   'https://img00.deviantart.net/32b6/i/2014/353/a/2/mashup_anime_collage_by_dinocojv-d8af5lu.jpg';
@@ -233,8 +233,8 @@ const Masterani = {
   },
   // Anime in detail
   async getAnime(id) {
-    let tempURL = FULL_URLX;
-    if (id === 64) tempURL = FULL_URL;
+    let tempURL = FULL_URL;
+    // if (id === 64) tempURL = FULL_URLX; Sometimes it doesnt work with the main proxy
     const { data } = await axios.get(`${tempURL}${anime}${id}${detailed}`);
     data.poster = `${large}${data.poster}`;
 
@@ -247,16 +247,13 @@ const Masterani = {
   async getEpisode(episode) {
     const { data } = await axios.get(`${FULL_URLX}/anime/watch${episode}`);
     const $ = cheerio.load(data);
-    const body = $('body');
-    const script = $('script[type="text/javascript"]', body)
-      .first()
-      .html();
+    const videoMirrors = $('video-mirrors');
+    const script = videoMirrors.attr(':mirrors');
+
     // Parse script
     const ast = parseScript(script);
     const { statements } = ast;
-    const elements =
-      statements[0].declaration.declarators[0].init.properties[1].expression
-        .elements;
+    const elements = statements[0].expression.elements;
 
     const links = elements.map((el, index) => {
       const { properties } = el;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 // Bars
 import SideBar from './components/SideBar';
 import MenuBar from './components/MenuBar';
@@ -15,7 +15,15 @@ import Trending from './components/Trending';
 import Watch from './components/Watch';
 
 class App extends Component {
+  componentDidMount() {
+    console.log(this.props.location);
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.location !== this.props.location)
+      console.log(this.props.location);
+  }
   render() {
+    const { location } = this.props;
     return (
       <div>
         <SideBar />
@@ -23,6 +31,11 @@ class App extends Component {
           <MenuBar className="menu-bar" />
           <div className="lower-content">
             <Switch>
+              {location.pathname.includes('index.html') ? (
+                <Redirect exact to="/" />
+              ) : (
+                ''
+              )}
               <Route exact path="/" component={Home} />
               <Route path="/login" component={UserForm} />
               <Route path="/dashboard" component={Dashboard} />

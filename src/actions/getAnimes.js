@@ -31,7 +31,7 @@ export const getTrendingAnimes = () => {
 export const getFilterdAnimes = query => {
   const request = Masterani.getFilteredAnimes(query);
   return {
-    type: GET_TRENDING_ANIMES,
+    type: GET_FILTERED_ANIMES,
     payload: request
   };
 };

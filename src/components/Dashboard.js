@@ -9,18 +9,20 @@ import { Grid, Button, Header } from 'semantic-ui-react';
 
 class Dashboard extends Component {
   componentDidMount() {
-    if (!this.props.auth || this.props.auth.loggedIn === false) {
+    const { auth } = this.props;
+    if (!auth || auth.loggedIn === false) {
       this.props.history.push('/login');
-    } else if (this.props.auth && this.props.auth.loggedIn) {
-      this.props.getUser(this.props.auth.response.uid);
+    } else if (auth && auth.loggedIn) {
+      this.props.getUser(auth.response.uid);
     }
   }
   componentDidUpdate(prevProps) {
+    const { auth } = this.props;
     if (prevProps.auth !== this.props.auth) {
-      if (this.props.auth.loggedIn === false) {
+      if (auth.loggedIn === false) {
         this.props.history.push('/login');
-      } else if (this.props.auth && this.props.auth.loggedIn) {
-        this.props.getUser(this.props.auth.response.uid);
+      } else if (auth && auth.loggedIn) {
+        this.props.getUser(auth.response.uid);
       }
     }
   }
@@ -31,7 +33,7 @@ class Dashboard extends Component {
         <Grid.Row className="header-row-dash">
           <Grid.Column verticalAlign="middle">
             <Header className="header-section-dash">
-              Welcome{' '}
+              Welcome
               <span className="username">{user !== null && user.username}</span>
               <Button
                 compact

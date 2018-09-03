@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Grid } from 'semantic-ui-react';
-
 import SampleItem from './SampleItem';
 
 const SampleList = ({ text, animes }) => {

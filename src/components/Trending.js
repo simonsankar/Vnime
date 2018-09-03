@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getTrendingAnimes, resetAnimes } from '../actions/getAnimes';
-import { Grid } from 'semantic-ui-react';
 
+import { Grid } from 'semantic-ui-react';
 import HeaderBar from './HeaderBar';
 import AnimeList from './AnimeList';
 import Loading from './Loading';

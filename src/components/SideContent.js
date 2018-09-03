@@ -114,10 +114,11 @@ class SideContent extends Component {
   }
 }
 
+const mapStateToProps = ({ auth }) => ({ auth });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ addAnimeToUser }, dispatch);
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(SideContent);

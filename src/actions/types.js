@@ -47,8 +47,8 @@ export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 
 // Users
 // Create user
-export const CREATE_USER = 'CREATE_USER';
+// export const CREATE_USER = 'CREATE_USER';
+// Delete User
+// export const DELETE_USER = 'DELETE_USER';
 // Get User
 export const GET_USER = 'GET_USER';
-// Delete User
-export const DELETE_USER = 'DELETE_USER';

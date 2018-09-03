@@ -9,12 +9,9 @@ class SideBar extends Component {
 
   render() {
     const activeItem = this.props.location.pathname.replace('/', '');
-    const { auth } = this.props;
     return (
       <Menu secondary vertical fixed="left" inverted className="side-bar">
-        <Menu.Item>
-          <Menu.Header>V N I M E</Menu.Header>
-        </Menu.Item>
+        <Menu.Item>V N I M E</Menu.Item>
         <Menu.Item className="divider" />
 
         <Menu.Item

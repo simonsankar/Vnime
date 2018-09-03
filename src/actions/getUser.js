@@ -1,4 +1,4 @@
-import { CREATE_USER, GET_USER, DELETE_USER } from './types';
+import { GET_USER } from './types';
 import { usersRef } from '../api/firebase';
 
 // Create new user
