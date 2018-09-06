@@ -2,7 +2,8 @@ import firebase from 'firebase';
 import { config } from './firebase.config';
 
 firebase.initializeApp(config);
-// Auth
+
+// Authentication helpers
 export const auth = {
   async login(email, password) {
     const { user } = await firebase

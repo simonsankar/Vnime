@@ -1,13 +1,14 @@
-import { GET_USER } from './types';
+import { GET_USER, TO_BE_ADDED } from './types';
 import { usersRef } from '../api/firebase';
 
 // Create new user
-export const createUser = (id, username) => dispatch => {
-  usersRef.child(id).set({ username });
+export const createUser = (uid, username) => dispatch => {
+  usersRef.child(uid).set({ username });
 };
+
 // Get user
-export const getUser = id => dispatch => {
-  usersRef.child(id).on('value', snapshot => {
+export const getUser = uid => dispatch => {
+  usersRef.child(uid).on('value', snapshot => {
     dispatch({
       type: GET_USER,
       payload: snapshot.val()
@@ -15,21 +16,24 @@ export const getUser = id => dispatch => {
   });
 };
 
+// Favlist functions
+export const toggleToBeAdded = toBeAdded => ({
+  type: TO_BE_ADDED,
+  payload: toBeAdded
+});
 // Add anime to user
-export const addAnimeToUser = (id, anime) => dispatch => {
+export const addAnimeToUser = (uid, anime) => dispatch => {
   usersRef
-    .child(id)
+    .child(uid)
     .child('favlist')
     .child(anime.info.id)
     .set(anime);
 };
-
-// Check if anime exists
-export const isAnimeAdded = (id, anime) => dispatch => {
-  const anime = usersRef
-    .child(id)
+// Remove anime from user
+export const removeAnimeFromUser = (uid, anime) => dispatch => {
+  usersRef
+    .child(uid)
     .child('favlist')
-    .child(id);
-  if (anime !== null) return true;
-  return false;
+    .child(anime.info.id)
+    .remove();
 };

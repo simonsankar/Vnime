@@ -32,7 +32,7 @@ class UserForm extends Component {
         <Segment className="centered-form" raised>
           {loginForm ? (
             <div className="fade-in">
-              <LoginForm />
+              <LoginForm pushable={true} />
               <Message size="mini" info>
                 <Message.Header>No account?</Message.Header>
                 <p>
@@ -50,8 +50,8 @@ class UserForm extends Component {
               </Message>
             </div>
           ) : (
-            <div className="fade-in">
-              <SignUpForm />
+            <div>
+              <SignUpForm pushable={true} />
               <Message size="mini" info>
                 <Message.Header>Got an account already?</Message.Header>
                 <p>

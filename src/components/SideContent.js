@@ -13,13 +13,18 @@ import {
   Popup,
   Rating
 } from 'semantic-ui-react';
+import UserModal from './UserModal';
 
 class SideContent extends Component {
+  // this.state = {toBeAdded:false,open:false}
+  componentDidUpdate(prevProps) {}
+
   handleAddAnimeToUser() {
     this.props.addAnimeToUser('C8JetjMvlkOTraylU4G85JnxdUc2', this.props.anime);
   }
+  handleLoginAndAddAnime() {}
   render() {
-    const { anime } = this.props;
+    const { anime, auth } = this.props;
     return (
       <Grid.Column
         mobile={4}
@@ -30,28 +35,33 @@ class SideContent extends Component {
         <Card fluid>
           <Image src={anime.poster} fluid />
           <div className="fav">
-            <Popup
-              trigger={
-                <Button
-                  circular
-                  color="blue"
-                  icon="plus"
-                  size="mini"
-                  onClick={() => this.handleAddAnimeToUser()}
-                />
-              }
-              content="Add to FavList?"
-              position="top left"
-              on="hover"
-              size="mini"
-            />
+            {auth && auth.loggedIn ? (
+              <Popup
+                trigger={
+                  <Button
+                    circular
+                    color="blue"
+                    icon="plus"
+                    size="mini"
+                    onClick={() => this.handleAddAnimeToUser()}
+                  />
+                }
+                content="Add to FavList?"
+                position="top left"
+                on="hover"
+                size="mini"
+              />
+            ) : (
+              <UserModal />
+            )}
           </div>
         </Card>
         <Header>{anime.info.title}</Header>
         <p>{anime.info.synopsis}</p>
         <List size="mini" relaxed>
           <List.Item>
-            Rating<List.Content floated="right">
+            Rating
+            <List.Content floated="right">
               <Rating
                 size="mini"
                 disabled
@@ -61,13 +71,16 @@ class SideContent extends Component {
             </List.Content>
           </List.Item>
           <List.Item>
-            Score<List.Content floated="right">
-              {anime.info.score.toFixed(1)}/5
+            Score
+            <List.Content floated="right">
+              {anime.info.score.toFixed(1)}
+              /5
             </List.Content>
           </List.Item>
 
           <List.Item>
-            Type<List.Content floated="right">
+            Type
+            <List.Content floated="right">
               {anime.info.type === 0
                 ? 'TV'
                 : anime.info.type === 1
@@ -80,7 +93,8 @@ class SideContent extends Component {
             </List.Content>
           </List.Item>
           <List.Item>
-            Status<List.Content floated="right">
+            Status
+            <List.Content floated="right">
               {anime.info.status === 0
                 ? 'COMPLETED'
                 : anime.info.status === 1
@@ -89,24 +103,26 @@ class SideContent extends Component {
             </List.Content>
           </List.Item>
           <List.Item>
-            Episodes<List.Content floated="right">
+            Episodes
+            <List.Content floated="right">
               {anime.info.episode_count || '???'}
             </List.Content>
           </List.Item>
           <List.Item>
-            Duration<List.Content floated="right">
+            Duration
+            <List.Content floated="right">
               {anime.info.episode_length || '???'}
             </List.Content>
           </List.Item>
           <List.Item>
-            Aired<List.Content floated="right">
+            Aired
+            <List.Content floated="right">
               {anime.info.started_airing_date || '???'}
             </List.Content>
           </List.Item>
           <List.Item>
-            Age<List.Content floated="right">
-              {anime.info.age_rating}
-            </List.Content>
+            Age
+            <List.Content floated="right">{anime.info.age_rating}</List.Content>
           </List.Item>
         </List>
       </Grid.Column>
@@ -114,7 +130,7 @@ class SideContent extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => ({ auth });
+const mapStateToProps = ({ auth, toBeAdded }) => ({ auth, toBeAdded });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ addAnimeToUser }, dispatch);
 

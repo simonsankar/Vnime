@@ -24,7 +24,7 @@ class SignUpForm extends Component {
         const { uid } = this.props.auth.response;
         console.log(this.props.history, uid);
         this.props.createUser(uid, this.state.username.value);
-        this.props.history.push('/dashboard');
+        if (this.props.pushable) this.props.history.push('/dashboard');
       }
     }
   }

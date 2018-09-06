@@ -167,6 +167,10 @@ h6 {
   transform: translate(-50%, -55%);
 }
 
+/* DASHBOARD */
+.dashboard {
+  padding-left: 14px !important;
+}
 /* DIVIDE */
 .divide {
   content: '';
@@ -183,6 +187,22 @@ h6 {
 .draggable:active {
   cursor: -webkit-grabbing;
   -webkit-app-region: drag !important;
+}
+
+/* ERROR */
+.error-page {
+  position: absolute;
+  top: 25%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  font-family: TrueLies;
+  font-size: 105px;
+  /* font-weight: 500; */
+  color: #0a243f;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  text-shadow: -2px 4px 0 rgba(34, 36, 38, 0.12),
+    -2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 /* FAV button */
 .fav {
@@ -218,7 +238,7 @@ h6 {
     #dbf675 5%
   );
   box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.27),
-    0 2px 10px 0 rgba(34, 36, 38, 0.30);
+    0 2px 10px 0 rgba(34, 36, 38, 0.3);
 }
 .header-section {
   padding-left: 1rem !important;
@@ -548,6 +568,12 @@ h6 {
   text-align: center;
   transform: translate(-50%, -30%);
 }
+/* Removable */
+.removable {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
 /* Results */
 .result > a {
   height: 100%;
@@ -684,6 +710,18 @@ h6 {
   z-index: 1;
   margin-top: -200px;
   margin-bottom: 1rem;
+}
+/* Modal fix */
+.ui.page.modals.dimmer.transition.visible.active {
+  margin: 0;
+}
+.fix.visible.transition {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  margin: 0 !important;
+  visibility: visible !important;
 }
 /* ANIMATIONS */
 /* Fade in */

@@ -8,7 +8,7 @@ const SampleItem = ({ anime }) => {
       <Popup
         size="mini"
         trigger={
-          <div>
+          <div className="fade-in">
             <Image
               as={Link}
               to={anime.url}

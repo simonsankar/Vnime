@@ -46,9 +46,9 @@ export const USER_SIGNED_UP = 'USER_SIGNED_UP';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 
 // Users
-// Create user
-// export const CREATE_USER = 'CREATE_USER';
-// Delete User
-// export const DELETE_USER = 'DELETE_USER';
 // Get User
 export const GET_USER = 'GET_USER';
+
+// Favlist Anime
+// Anime to be added {not logged in but wants to add anime}
+export const TO_BE_ADDED = 'TO_BE_ADDED';

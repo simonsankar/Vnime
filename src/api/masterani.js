@@ -233,8 +233,8 @@ const Masterani = {
   },
   // Anime in detail
   async getAnime(id) {
-    let tempURL = FULL_URL;
-    // if (id === 64) tempURL = FULL_URLX; Sometimes it doesnt work with the main proxy
+    let tempURL = FULL_URLX;
+    if (id === 64) tempURL = FULL_URL; //Sometimes it doesnt work with the main proxy
     const { data } = await axios.get(`${tempURL}${anime}${id}${detailed}`);
     data.poster = `${large}${data.poster}`;
 

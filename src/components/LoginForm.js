@@ -18,7 +18,7 @@ class LoginForm extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.auth !== this.props.auth) {
       console.log(this.props.auth);
-      if (this.props.auth.loggedIn) {
+      if (this.props.auth.loggedIn && this.props.pushable) {
         console.log(this.props.history);
         this.props.history.push('/dashboard');
       }

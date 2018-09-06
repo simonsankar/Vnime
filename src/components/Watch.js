@@ -57,7 +57,7 @@ class Watch extends Component {
             </Grid>
           </div>
         ) : anime === false ? (
-          <div>Error</div>
+          <div className="error-page">Error</div>
         ) : (
           <Dimmer active>
             <Loader size="huge" />

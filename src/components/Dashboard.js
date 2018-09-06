@@ -5,13 +5,18 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/setAuth';
 import { getUser } from '../actions/getUser';
 
-import { Grid, Button, Header } from 'semantic-ui-react';
+import { Grid, Button, Header, Radio } from 'semantic-ui-react';
+import DashboardList from './DashboardList';
 
 class Dashboard extends Component {
+  state = { checked: false };
+  toggleRemove = () => this.setState({ checked: !this.state.checked });
+
   componentDidMount() {
     const { auth } = this.props;
     if (!auth || auth.loggedIn === false) {
       this.props.history.push('/login');
+      // this.props.getUser('C8JetjMvlkOTraylU4G85JnxdUc2');
     } else if (auth && auth.loggedIn) {
       this.props.getUser(auth.response.uid);
     }
@@ -21,15 +26,17 @@ class Dashboard extends Component {
     if (prevProps.auth !== this.props.auth) {
       if (auth.loggedIn === false) {
         this.props.history.push('/login');
+        // this.props.getUser('C8JetjMvlkOTraylU4G85JnxdUc2');
       } else if (auth && auth.loggedIn) {
         this.props.getUser(auth.response.uid);
       }
     }
   }
   render() {
+    const { checked } = this.state;
     const { user, logoutUser } = this.props;
     return (
-      <Grid>
+      <Grid className="dashboard" divided>
         <Grid.Row className="header-row-dash">
           <Grid.Column verticalAlign="middle">
             <Header className="header-section-dash">
@@ -47,7 +54,31 @@ class Dashboard extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width={12}>Dashboard!</Grid.Column>
+          <Grid.Column width={12}>
+            <Header dividing size="large">
+              Your series
+              <Header.Subheader>
+                <Radio
+                  slider
+                  label="Edit list"
+                  onChange={this.toggleRemove}
+                  checked={checked}
+                />
+              </Header.Subheader>
+            </Header>
+
+            <Grid className="dashboard">
+              {user !== null && user.favlist !== null ? (
+                <DashboardList
+                  removable={checked}
+                  text="Your series"
+                  animes={user.favlist}
+                />
+              ) : (
+                'Nothing yet wumpus!'
+              )}
+            </Grid>
+          </Grid.Column>
           <Grid.Column width={4}>Friends</Grid.Column>
         </Grid.Row>
       </Grid>
