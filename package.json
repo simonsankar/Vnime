@@ -1,7 +1,7 @@
 {
   "author": "Simon Sankar",
   "description": "Anime streaming app",
-  "name": "Vnime",
+  "name": "vnime",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -40,5 +40,13 @@
   "devDependencies": {
     "electron": "^1.8.4",
     "electron-builder": "^20.8.1"
+  },
+  "build": {
+    "appId": "com.vnime.app",
+    "copyright": "Copyright ©2018 ${author}",
+    "icon": "public/icon.ico",
+    "directories": {
+      "buildResources": "public"
+    }
   }
 }

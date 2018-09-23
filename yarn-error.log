@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js dist
 
 PATH: 
   C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Simon James Sankar\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\MInGW\bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\xampp\php;C:\Program Files\Java\jdk1.8.0_101\bin;C:\Uncrustify;C:\Program Files\Sublime Text 3;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files\MongoDB\Server\3.4\bin;C:\MinGW\bin;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Yarn\bin;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Users\Simon James Sankar\AppData\Local\Programs\Python\Python36-32\Scripts;C:\Users\Simon James Sankar\AppData\Local\Programs\Python\Python36-32;C:\Users\Simon James Sankar\AppData\Local\Microsoft\WindowsApps;C:\Python27;C:\Users\Simon James Sankar\AppData\Local\atom\bin;C:\Users\Simon James Sankar\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\Simon James Sankar\.babun;C:\Users\Simon James Sankar\AppData\Roaming\npm;C:\Program Files\Heroku\bin;C:\Users\Simon James Sankar\AppData\Roaming\Composer\vendor\bin;C:\Users\Simon James Sankar\AppData\Local\Yarn\bin;C:\youtube-dl\bin
@@ -17,7 +17,7 @@ npm manifest:
   {
     "author": "Simon Sankar",
     "description": "Anime streaming app",
-    "name": "Vnime",
+    "name": "vnime",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -56,6 +56,14 @@ npm manifest:
     "devDependencies": {
       "electron": "^1.8.4",
       "electron-builder": "^20.8.1"
+    },
+    "build": {
+      "appId": "com.vnime.app",
+      "copyright": "Copyright ©2018 ${author}",
+      "icon": "public/icon.ico",
+      "directories": {
+        "buildResources": "public"
+      }
     }
   }
 
@@ -8633,7 +8641,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c nf start -p 3000
+  Arguments: /d /s /c npm run build && build
   Directory: C:\Users\Simon James Sankar\Documents\GitHub\Vnime
   Output:
   

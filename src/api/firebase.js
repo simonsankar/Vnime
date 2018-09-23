@@ -1,10 +1,12 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
 import { config } from './firebase.config';
 
 firebase.initializeApp(config);
 
 // Authentication helpers
-export const auth = {
+export const authRef = {
   async login(email, password) {
     const { user } = await firebase
       .auth()

@@ -1,17 +1,44 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { withRouter, Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions/setAuth';
+
+import { Menu, Button } from 'semantic-ui-react';
 import SearchBar from './SearchBar';
 
 class SideBar extends Component {
-  componentDidMount() {}
-
   render() {
     const activeItem = this.props.location.pathname.replace('/', '');
+    const { auth, logoutUser } = this.props;
+
     return (
       <Menu secondary vertical fixed="left" inverted className="side-bar">
-        <Menu.Item>V N I M E</Menu.Item>
+        <Menu.Item className="menu-item-header">
+          <Menu.Header className="menu-header">
+            V N I M E
+            {!auth || auth & !auth.loggedIn ? (
+              <Button
+                className="btn-auth"
+                floated="right"
+                color="blue"
+                size="mini"
+                icon="sign in"
+                as={Link}
+                to="/login"
+              />
+            ) : (
+              <Button
+                className="btn-auth"
+                floated="right"
+                color="blue"
+                size="mini"
+                icon="sign out"
+                onClick={() => logoutUser()}
+              />
+            )}
+          </Menu.Header>
+        </Menu.Item>
         <Menu.Item className="divider" />
 
         <Menu.Item
@@ -21,6 +48,7 @@ class SideBar extends Component {
           icon="user"
           active={activeItem === 'dashboard'}
         />
+
         <Menu.Item className="divider" />
         <Menu.Item
           as={Link}
@@ -73,4 +101,13 @@ class SideBar extends Component {
   }
 }
 
-export default withRouter(SideBar);
+const mapStateToProps = ({ auth }) => ({ auth });
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ logoutUser }, dispatch);
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SideBar)
+);

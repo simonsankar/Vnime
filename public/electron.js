@@ -22,8 +22,7 @@ function createWindow() {
     moveable: true,
     minimizable: true,
     maximizable: true,
-    title: 'Vnime',
-    icon: './vnime.png'
+    title: 'Vnime'
   });
   // load the index.html of the app.
   const startUrl =
