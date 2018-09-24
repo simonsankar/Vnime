@@ -50,6 +50,9 @@ class AnimePoster extends Component {
     if (prevProps.auth !== auth && auth.loggedIn) {
       this.props.isAlreadyAdded(auth.response.uid, anime);
     }
+    if (prevProps.anime !== this.props.anime) {
+      this.props.isAlreadyAdded(auth.response.uid, anime);
+    }
   }
 
   render() {
