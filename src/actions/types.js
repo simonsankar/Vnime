@@ -52,3 +52,5 @@ export const GET_USER = 'GET_USER';
 // Favlist Anime
 // Anime to be added {not logged in but wants to add anime}
 export const TO_BE_ADDED = 'TO_BE_ADDED';
+// Already Added?
+export const IS_ALREADY_ADDED = 'IS_ALREADY_ADDED';

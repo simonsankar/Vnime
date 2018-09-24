@@ -1,5 +1,7 @@
-import { GET_USER, TO_BE_ADDED } from './types';
+import { GET_USER, TO_BE_ADDED, IS_ALREADY_ADDED } from './types';
 import { usersRef } from '../api/firebase';
+
+const FAV_LIST = 'favlist';
 
 // Create new user
 export const createUser = (uid, username) => dispatch => {
@@ -21,11 +23,24 @@ export const toggleToBeAdded = toBeAdded => ({
   type: TO_BE_ADDED,
   payload: toBeAdded
 });
+// Anime already added
+export const isAlreadyAdded = (uid, anime) => dispatch => {
+  usersRef
+    .child(uid)
+    .child(FAV_LIST)
+    .child(anime.info.id)
+    .once('value', snapshot => {
+      dispatch({
+        type: IS_ALREADY_ADDED,
+        payload: snapshot.val()
+      });
+    });
+};
 // Add anime to user
 export const addAnimeToUser = (uid, anime) => dispatch => {
   usersRef
     .child(uid)
-    .child('favlist')
+    .child(FAV_LIST)
     .child(anime.info.id)
     .set(anime);
 };
@@ -33,7 +48,7 @@ export const addAnimeToUser = (uid, anime) => dispatch => {
 export const removeAnimeFromUser = (uid, anime) => dispatch => {
   usersRef
     .child(uid)
-    .child('favlist')
+    .child(FAV_LIST)
     .child(anime.info.id)
     .remove();
 };

@@ -14,8 +14,7 @@ class Dashboard extends Component {
   componentDidMount() {
     const { auth } = this.props;
     if (!auth || auth.loggedIn === false) {
-      // this.props.history.push('/login');
-      this.props.getUser('C8JetjMvlkOTraylU4G85JnxdUc2');
+      this.props.history.push('/login');
     } else if (auth && auth.loggedIn) {
       this.props.getUser(auth.response.uid);
     }
@@ -24,8 +23,7 @@ class Dashboard extends Component {
     const { auth } = this.props;
     if (prevProps.auth !== this.props.auth) {
       if (auth.loggedIn === false) {
-        // this.props.history.push('/login');
-        this.props.getUser('C8JetjMvlkOTraylU4G85JnxdUc2');
+        this.props.history.push('/login');
       } else if (auth && auth.loggedIn) {
         this.props.getUser(auth.response.uid);
       }
@@ -38,13 +36,15 @@ class Dashboard extends Component {
       <Grid className="dashboard" divided>
         <Grid.Row className="header-row-dash">
           <Grid.Column verticalAlign="middle">
-            <Header className="header-section-dash">
+            <span className="dashboard-username">
               <Image
+                className="dashboard-image"
+                bordered
                 circular
-                src="https://react.semantic-ui.com/images/avatar/large/matthew.png"
+                src="https://vignette.wikia.nocookie.net/naruto/images/7/7e/Hashirama_Senju.png/revision/latest?cb=20160124040430"
               />
-              <span className="username">{user !== null && user.username}</span>
-            </Header>
+              {user !== null && user.username}
+            </span>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>

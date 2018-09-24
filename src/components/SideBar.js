@@ -16,7 +16,7 @@ class SideBar extends Component {
       <Menu secondary vertical fixed="left" inverted className="side-bar">
         <Menu.Item className="menu-item-header">
           <Menu.Header className="menu-header">
-            V N I M E
+            VNIME
             {!auth || auth & !auth.loggedIn ? (
               <Button
                 className="btn-auth"
@@ -40,7 +40,10 @@ class SideBar extends Component {
           </Menu.Header>
         </Menu.Item>
         <Menu.Item className="divider" />
-
+        <Menu.Item>
+          <SearchBar />
+        </Menu.Item>
+        <Menu.Item className="divider" />
         <Menu.Item
           as={Link}
           to="/dashboard"
@@ -48,8 +51,8 @@ class SideBar extends Component {
           icon="user"
           active={activeItem === 'dashboard'}
         />
-
         <Menu.Item className="divider" />
+
         <Menu.Item
           as={Link}
           to="/"
@@ -93,9 +96,6 @@ class SideBar extends Component {
           active={activeItem === 'schedule'}
         />
         <Menu.Item className="divider" />
-        <Menu.Item>
-          <SearchBar />
-        </Menu.Item>
       </Menu>
     );
   }

@@ -1,30 +1,11 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { addAnimeToUser } from '../actions/getUser';
 
-import {
-  Grid,
-  List,
-  Image,
-  Card,
-  Header,
-  Button,
-  Popup,
-  Rating
-} from 'semantic-ui-react';
-import UserModal from './UserModal';
+import { Grid, List, Header, Rating } from 'semantic-ui-react';
+import AnimePoster from './AnimePoster';
 
 class SideContent extends Component {
-  // this.state = {toBeAdded:false,open:false}
-  componentDidUpdate(prevProps) {}
-
-  handleAddAnimeToUser() {
-    this.props.addAnimeToUser('C8JetjMvlkOTraylU4G85JnxdUc2', this.props.anime);
-  }
-  handleLoginAndAddAnime() {}
   render() {
-    const { anime, auth } = this.props;
+    const { anime } = this.props;
     return (
       <Grid.Column
         mobile={4}
@@ -32,30 +13,7 @@ class SideContent extends Component {
         computer={4}
         className="side-details fade-in"
       >
-        <Card fluid>
-          <Image src={anime.poster} fluid />
-          <div className="fav">
-            {auth && auth.loggedIn ? (
-              <Popup
-                trigger={
-                  <Button
-                    circular
-                    color="blue"
-                    icon="plus"
-                    size="mini"
-                    onClick={() => this.handleAddAnimeToUser()}
-                  />
-                }
-                content="Add to FavList?"
-                position="top left"
-                on="hover"
-                size="mini"
-              />
-            ) : (
-              <UserModal />
-            )}
-          </div>
-        </Card>
+        <AnimePoster anime={anime} />
         <Header>{anime.info.title}</Header>
         <p>{anime.info.synopsis}</p>
         <List size="mini" relaxed>
@@ -130,11 +88,4 @@ class SideContent extends Component {
   }
 }
 
-const mapStateToProps = ({ auth, toBeAdded }) => ({ auth, toBeAdded });
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ addAnimeToUser }, dispatch);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SideContent);
+export default SideContent;
