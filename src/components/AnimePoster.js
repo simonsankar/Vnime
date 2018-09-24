@@ -78,7 +78,7 @@ class AnimePoster extends Component {
                   size="mini"
                 />
                 <Confirm
-                  className="centered"
+                  className="confirm-centered"
                   header="Add it?"
                   size="mini"
                   content={`Add ${anime.info.title} to your favlist?`}
@@ -108,7 +108,7 @@ class AnimePoster extends Component {
                   size="mini"
                 />
                 <Confirm
-                  className="centered"
+                  className="confirm-centered"
                   header="Remove it?"
                   size="mini"
                   content={`Remove ${anime.info.title} from your favlist?`}
@@ -118,7 +118,7 @@ class AnimePoster extends Component {
                   onConfirm={this.onConfirmRemove}
                 />
                 <Confirm
-                  className="centered"
+                  className="confirm-centered"
                   header="Already added!"
                   size="mini"
                   content={`${
