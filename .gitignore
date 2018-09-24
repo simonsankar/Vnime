@@ -1,7 +1,7 @@
 node_modules
 dist
 build
-firebase.config.js
+.src/api/firebase.config.js
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
