@@ -1,13 +1,14 @@
 node_modules
 dist
 build
+src/api
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
 
 # Folder config file
 Desktop.ini
-firebase.config.js
+
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
