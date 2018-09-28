@@ -42,7 +42,7 @@ class SearchBar extends Component {
 
   handleResultSelect = (e, { url }) => {
     console.log('Selected:', url);
-    this.resetComponent();
+    // this.resetComponent();
   };
   render() {
     const { searchTerm } = this.state;

@@ -172,11 +172,11 @@ h6 {
 
 /* CENTERED */
 
-.confirm-centered{
+.confirm-centered {
   position: absolute !important;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -55%); 
+  transform: translate(-50%, -55%);
 }
 .centered-form {
   z-index: 10;
@@ -189,7 +189,8 @@ h6 {
 }
 
 /* DASHBOARD */
-.dashboard {
+.ui.grid.dashboard {
+  display: inherit !important;
   padding-left: 14px !important;
   position: relative;
   min-height: calc(100vh - 183px);
