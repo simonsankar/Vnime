@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 import { config } from './firebase.config';
 
 firebase.initializeApp(config);
@@ -27,3 +28,6 @@ export const authRef = {
 // Database
 const databaseRef = firebase.database().ref();
 export const usersRef = databaseRef.child('users');
+
+const storageRef = firebase.storage().ref();
+export const avatarsRef = storageRef.child('avatars');

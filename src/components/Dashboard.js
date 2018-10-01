@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getUser } from '../actions/getUser';
+import { getUser, getUserAvatar } from '../actions/getUser';
 
 import { Grid, Header, Radio, Icon, Image } from 'semantic-ui-react';
 import DashboardList from './DashboardList';
+import EditProfileModal from './EditProfileModal';
 
 class Dashboard extends Component {
   state = { checked: false };
+  // Toggle remove animes
   toggleRemove = () => this.setState({ checked: !this.state.checked });
 
   componentDidMount() {
@@ -17,6 +19,7 @@ class Dashboard extends Component {
       this.props.history.push('/login');
     } else if (auth && auth.loggedIn) {
       this.props.getUser(auth.response.uid);
+      this.props.getUserAvatar(auth.response.uid);
     }
   }
   componentDidUpdate(prevProps) {
@@ -26,12 +29,15 @@ class Dashboard extends Component {
         this.props.history.push('/login');
       } else if (auth && auth.loggedIn) {
         this.props.getUser(auth.response.uid);
+        this.props.getUserAvatar(auth.response.uid);
+        console.log(this.props.avatar);
       }
     }
   }
+
   render() {
     const { checked } = this.state;
-    const { user } = this.props;
+    const { user, auth, avatar } = this.props;
     return (
       <Grid className="dashboard" divided>
         <Grid.Row className="header-row-dash">
@@ -41,10 +47,22 @@ class Dashboard extends Component {
                 className="dashboard-image"
                 bordered
                 circular
-                src="https://vignette.wikia.nocookie.net/naruto/images/7/7e/Hashirama_Senju.png/revision/latest?cb=20160124040430"
+                src={
+                  avatar
+                    ? avatar
+                    : 'https://community.yellowfinbi.com/public/avatars/default-avatar.svg'
+                }
               />
               {user !== null && user.username}
             </span>
+            {user !== null && user.username ? (
+              <EditProfileModal
+                uid={auth.response.uid}
+                username={user.username}
+              />
+            ) : (
+              ''
+            )}
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -89,9 +107,9 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = ({ auth, user }) => ({ auth, user });
+const mapStateToProps = ({ auth, user, avatar }) => ({ auth, user, avatar });
 const mapStateToDispatch = dispatch =>
-  bindActionCreators({ getUser }, dispatch);
+  bindActionCreators({ getUser, getUserAvatar }, dispatch);
 
 export default connect(
   mapStateToProps,

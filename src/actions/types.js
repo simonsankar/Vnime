@@ -48,6 +48,8 @@ export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 // Users
 // Get User
 export const GET_USER = 'GET_USER';
+// Get user avatar
+export const GET_USER_AVATAR = 'GET_USER_AVATAR';
 
 // Favlist Anime
 // Anime to be added {not logged in but wants to add anime}

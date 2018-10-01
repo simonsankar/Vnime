@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import avatar from './avatar_reducer';
 import auth from './auth_reducer';
 import animes from './animes_reducer';
 import anime from './anime_reducer';
@@ -15,6 +16,7 @@ import user from './user_reducer';
 import maxIcon from './maxIcon_reducer';
 
 const rootReducer = combineReducers({
+  avatar,
   auth,
   animes,
   anime,

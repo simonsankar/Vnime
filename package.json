@@ -43,10 +43,14 @@
   },
   "build": {
     "appId": "com.vnime.app",
-    "copyright": "Copyright ©2018 ${author}",
-    "icon": "public/icon.ico",
+    "copyright": "Copyright © 2018 ${author}",
+    "icon": "assets/icon.png",
     "directories": {
       "buildResources": "public"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
     }
   }
 }

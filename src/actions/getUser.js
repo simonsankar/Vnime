@@ -1,7 +1,13 @@
-import { GET_USER, TO_BE_ADDED, IS_ALREADY_ADDED } from './types';
-import { usersRef } from '../api/firebase';
+import {
+  GET_USER,
+  GET_USER_AVATAR,
+  TO_BE_ADDED,
+  IS_ALREADY_ADDED
+} from './types';
+import { usersRef, avatarsRef } from '../api/firebase';
 
 const FAV_LIST = 'favlist';
+const USERNAME = 'username';
 
 // Create new user
 export const createUser = (uid, username) => dispatch => {
@@ -16,6 +22,33 @@ export const getUser = uid => dispatch => {
       payload: snapshot.val()
     });
   });
+};
+// Get user avatar
+export const getUserAvatar = uid => dispatch => {
+  console.log('getting user avatar', uid);
+  avatarsRef
+    .child(`${uid}/avatar`)
+    .getDownloadURL()
+    .then(url => {
+      dispatch({
+        type: GET_USER_AVATAR,
+        payload: url
+      });
+    });
+};
+
+// Update user details
+export const updateUserDetails = (uid, username) => dispatch => {
+  usersRef
+    .child(uid)
+    .child(USERNAME)
+    .set(username);
+};
+export const updateUserAvatar = (uid, file) => dispatch => {
+  avatarsRef
+    .child(uid)
+    .child('avatar')
+    .put(file);
 };
 
 // Favlist functions

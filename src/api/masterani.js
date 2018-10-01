@@ -43,7 +43,7 @@ const defaultWallpaper =
 const Masterani = {
   // Newly updated
   async getUpdatedAnimes() {
-    const { data } = await axios.get(`${FULL_URL}${updated}`);
+    const { data } = await axios.get(`${FULL_URLX}${updated}`);
     const animes = data.map((anime, index) => {
       const img = `${medium}${anime.anime.poster}`;
       anime.anime.poster = img;
@@ -56,7 +56,7 @@ const Masterani = {
   },
   // Popular Animes
   async getPopularAnimes() {
-    const { data } = await axios.get(`${FULL_URL}${popular}`);
+    const { data } = await axios.get(`${FULL_URLX}${popular}`);
     const animes = data.map((el, index) => {
       const img = `${medium}${el.poster}`;
       const id = el.slug.substr(0, el.slug.indexOf('-'));
@@ -75,7 +75,7 @@ const Masterani = {
   },
   // Trending Animes
   async getTrendingAnimes() {
-    const { data } = await axios.get(`${FULL_URL}${trending}`);
+    const { data } = await axios.get(`${FULL_URLX}${trending}`);
     const animes = data.map((el, index) => {
       const img = `${medium}${el.poster}`;
       const id = el.slug.substr(0, el.slug.indexOf('-'));
@@ -98,7 +98,7 @@ const Masterani = {
     return data;
   },
   async getPopularAndTrendingAnimes() {
-    const { data } = await axios.get(`${FULL_URL}${trendingBoth}`);
+    const { data } = await axios.get(`${FULL_URLX}${trendingBoth}`);
     const { being_watched, popular_today } = data;
     const trending = being_watched.map((el, index) => {
       const img = `${medium}${el.poster}`;
@@ -133,7 +133,7 @@ const Masterani = {
   },
   // Scheduled Animes
   async getScheduledAnimes() {
-    const { data } = await axios.get(`${FULL_URL}${scheduled}`);
+    const { data } = await axios.get(`${FULL_URLX}${scheduled}`);
     const $ = cheerio.load(data);
     const body = $('body');
     const script = $('script[type="text/javascript"]', body)

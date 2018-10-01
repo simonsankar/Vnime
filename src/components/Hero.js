@@ -24,7 +24,7 @@ const Hero = ({ anime }) => {
           </h1>
           <List horizontal size="mini">
             {anime.genres.map(el => (
-              <List.Item as={Link} to={`/${el.id}`} key={el.id}>
+              <List.Item as={Link} to={`/genres`} key={el.id}>
                 <Label size="tiny" className="label-clear" basic>
                   {el.name}
                 </Label>
