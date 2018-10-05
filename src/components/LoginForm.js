@@ -14,6 +14,18 @@ class LoginForm extends Component {
       password: { value: '', error: false }
     };
   }
+  componentDidMount() {
+    if (this.props.auth) {
+      console.log(this.props.auth);
+      if (
+        (this.props.auth.loggedIn && this.props.pushable) ||
+        this.props.auth.loggedIn
+      ) {
+        console.log(this.props.history);
+        this.props.history.push('/dashboard');
+      }
+    }
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.auth !== this.props.auth) {

@@ -7,7 +7,6 @@ import {
   updateUserAvatar,
   getUserAvatar
 } from '../actions/getUser';
-import _ from 'lodash';
 
 import { Button, Modal, Input, Form } from 'semantic-ui-react';
 

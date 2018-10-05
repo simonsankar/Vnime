@@ -4,10 +4,21 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/setAuth';
 
+import { createMemoryHistory } from 'history';
+
 import { Menu, Button } from 'semantic-ui-react';
 import SearchBar from './SearchBar';
 
 class SideBar extends Component {
+  history = createMemoryHistory({
+    initialEntries: ['/'], // The initial URLs in the history stack
+    initialIndex: 0, // The starting index in the history stack
+    keyLength: 6, // The length of location.key
+    // A function to use to confirm navigation with the user. Required
+    // if you return string prompts from transition hooks (see below)
+    getUserConfirmation: null
+  });
+
   render() {
     const activeItem = this.props.location.pathname.replace('/', '');
     const { auth, logoutUser } = this.props;
@@ -17,26 +28,30 @@ class SideBar extends Component {
         <Menu.Item className="menu-item-header">
           <Menu.Header className="menu-header">
             VNIME
-            {!auth || auth & !auth.loggedIn ? (
-              <Button
-                className="btn-auth"
-                floated="right"
-                color="blue"
-                size="mini"
-                icon="sign in"
-                as={Link}
-                to="/login"
-              />
-            ) : (
-              <Button
-                className="btn-auth"
-                floated="right"
-                color="blue"
-                size="mini"
-                icon="sign out"
-                onClick={() => logoutUser()}
-              />
-            )}
+            <Button
+              disabled={
+                this.props.history.index === this.props.history.length - 1
+              }
+              floated="right"
+              size="mini"
+              className="btn-auth"
+              color="blue"
+              circular
+              icon="arrow right"
+              onClick={() => this.props.history.goForward()}
+            />
+            <Button
+              disabled={this.props.history.index === 0}
+              floated="right"
+              size="mini"
+              className="btn-auth"
+              color="blue"
+              circular
+              icon="arrow left"
+              onClick={() => {
+                this.props.history.goBack();
+              }}
+            />
           </Menu.Header>
         </Menu.Item>
         <Menu.Item className="divider" />
@@ -96,6 +111,28 @@ class SideBar extends Component {
           active={activeItem === 'schedule'}
         />
         <Menu.Item className="divider" />
+        <Menu.Item className="btn-options-container">
+          {!auth || auth & !auth.loggedIn ? (
+            <Button
+              className="btn-auth"
+              floated="right"
+              color="blue"
+              size="mini"
+              icon="sign in"
+              as={Link}
+              to="/login"
+            />
+          ) : (
+            <Button
+              className="btn-auth"
+              floated="right"
+              color="blue"
+              size="mini"
+              icon="sign out"
+              onClick={() => logoutUser()}
+            />
+          )}
+        </Menu.Item>
       </Menu>
     );
   }
