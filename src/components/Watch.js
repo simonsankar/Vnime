@@ -36,7 +36,12 @@ class Watch extends Component {
   render() {
     const { anime } = this.props;
     return (
-      <div>
+      <div
+        style={{
+          backgroundColor: '#f2f8fc',
+          minHeight: '100vh'
+        }}
+      >
         {anime !== null && anime !== false ? (
           <div>
             {/* Hero */}

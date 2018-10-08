@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getUser, getUserAvatar } from '../actions/getUser';
 
-import { Grid, Header, Radio, Icon, Image } from 'semantic-ui-react';
+import { Grid, Label, Header, Radio, Icon, Image } from 'semantic-ui-react';
 import DashboardList from './DashboardList';
 import EditProfileModal from './EditProfileModal';
 
@@ -68,15 +68,17 @@ class Dashboard extends Component {
         <Grid.Row>
           <Grid.Column width={12}>
             {user !== null && user.favlist !== undefined ? (
-              <Header size="large">
-                <Header.Subheader>
-                  <Radio
-                    slider
-                    label="Edit list"
-                    onChange={this.toggleRemove}
-                    checked={checked}
-                  />
-                </Header.Subheader>
+              <Header>
+                <Radio
+                  slider
+                  label="Edit list"
+                  onChange={this.toggleRemove}
+                  checked={checked}
+                />
+                <Label className="pullright">
+                  <Icon name="tv" />
+                  {Object.values(user.favlist).length}
+                </Label>
               </Header>
             ) : (
               ''

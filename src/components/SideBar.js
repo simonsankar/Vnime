@@ -55,7 +55,7 @@ class SideBar extends Component {
           </Menu.Header>
         </Menu.Item>
         <Menu.Item className="divider" />
-        <Menu.Item>
+        <Menu.Item className="searchBar-container">
           <SearchBar />
         </Menu.Item>
         <Menu.Item className="divider" />
