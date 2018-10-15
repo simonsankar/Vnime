@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import {
   getEpisodeOptions,
   resetEpisodeOptions
-} from '../actions/getEpisodeOptions';
-import { selectEpisode, resetSelectedVideo } from '../actions/selectEpisode';
-import { Grid, Segment } from 'semantic-ui-react';
+} from "../actions/getEpisodeOptions";
+import { selectEpisode, resetSelectedVideo } from "../actions/selectEpisode";
+import { Grid, Segment } from "semantic-ui-react";
 
-import Episode from './Episode';
-import EpisodeRanges from './EpisodeRanges';
+import Episode from "./Episode";
+import EpisodeRanges from "./EpisodeRanges";
 
 class EpisodeList extends Component {
   render() {
     const { episodes, slug } = this.props;
+    console.log(episodes);
     return (
       <Segment>
         <Grid verticalAlign="top" textAlign="left" padded="vertically">
@@ -38,7 +39,7 @@ class EpisodeList extends Component {
             ) : episodes.length > 50 ? (
               <EpisodeRanges slug={slug} episodes={episodes} />
             ) : (
-              'No episodes available :/'
+              "No episodes available :/"
             )}
           </Segment>
         </Grid>
@@ -58,4 +59,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(EpisodeList);
+export default connect(
+  null,
+  mapDispatchToProps
+)(EpisodeList);
