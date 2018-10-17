@@ -3,8 +3,8 @@ Colours
   primary: #38597c
   primary: #38597c
   secondary: #224264
-  tertiary: rgb(36,41,46)
-  tertiary: rgb(36,41,46)
+  tertiary: #24292e
+  tertiary: #24292e
   tertiary2: #45494d
   tertiary3: #353a3e
   accent:#f2f8fc 
@@ -310,9 +310,10 @@ h6 {
     0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 .header-row-sec {
-  background-color: #224264;
+  background-color: #f2f8fc;
   box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12),
     0 2px 10px 0 rgba(34, 36, 38, 0.15);
+  padding: 6px 0 0 0 !important;
 }
 .header-row-dash {
   height: 120px;
@@ -330,7 +331,7 @@ h6 {
   color: #f2f8fc !important;
 }
 .header-section-secondary {
-  color: #f2f8fc !important;
+  color: #24292e !important;
 }
 .header-section-dash {
   padding-left: 1rem !important;
@@ -470,6 +471,7 @@ h6 {
   color: #38597c !important;
   margin: 4px 3px !important;
   transition: all 0.18s ease-in-out;
+  cursor: default;
 }
 .label-blue:hover {
   background: #38597c !important;
@@ -553,6 +555,10 @@ h6 {
 .overflowY {
   overflow-y: scroll;
   min-height: 100vh;
+}
+/* Padding fix */
+.padding-fix {
+  padding: 0px 1rem !important;
 }
 /* PAGES */
 .page {
@@ -649,7 +655,7 @@ h6 {
 .result > a {
   height: 100%;
   width: 100%;
-  padding-bottom: 40px; /* color: rgb(36,41,46) !important; */
+  padding-bottom: 40px; /* color: #24292e !important; */
 }
 .ui.search > .results .result .image {
   float: left;

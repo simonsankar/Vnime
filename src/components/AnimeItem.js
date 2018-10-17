@@ -1,10 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Card, Image, Icon } from 'semantic-ui-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Grid, Card, Image, Icon } from "semantic-ui-react";
 
 const AnimeItem = ({ anime }) => {
   return (
-    <Grid.Column mobile={5} tablet={5} computer={3} className="fade-in">
+    <Grid.Column
+      mobile={3}
+      tablet={3}
+      computer={3}
+      largeScreen={2}
+      widescreen={2}
+      className="fade-in"
+    >
       <Card fluid as={Link} to={anime.url} className="card-no-border">
         <Image rounded src={anime.anime.poster} fluid />
         {anime.episode && (

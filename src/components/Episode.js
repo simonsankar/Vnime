@@ -36,7 +36,7 @@ class Episode extends Component {
             {episode.info.episode}
           </Label>
         }
-        content={episode.info.title}
+        content={episode.info.title || `Episode ${episode.info.episode}`}
       />
     );
   }

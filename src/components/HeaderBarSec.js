@@ -1,5 +1,5 @@
-import React from 'react';
-import { Grid, Header } from 'semantic-ui-react';
+import React from "react";
+import { Grid, Header } from "semantic-ui-react";
 
 const HeaderBarSec = ({ text }) => {
   return (
@@ -7,8 +7,7 @@ const HeaderBarSec = ({ text }) => {
       <Grid.Column>
         <Header
           className="header-section header-section-secondary"
-          inverted
-          size="medium"
+          size="small"
         >
           {text}
         </Header>

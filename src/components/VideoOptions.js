@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { selectVideo, resetVideo } from '../actions/selectVideo';
-import { Dropdown } from 'semantic-ui-react';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { selectVideo, resetVideo } from "../actions/selectVideo";
+import { Dropdown } from "semantic-ui-react";
 
 class VideoOptions extends Component {
   componentDidMount() {
@@ -51,7 +51,7 @@ class VideoOptions extends Component {
             onChange={(e, data) => this.handleChange(e, data)}
           />
         ) : (
-          <div>Cannot find links :/</div>
+          <div>'Cannot find links :/'</div>
         )}
       </div>
     );
