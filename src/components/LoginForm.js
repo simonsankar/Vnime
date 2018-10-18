@@ -67,6 +67,7 @@ class LoginForm extends Component {
     const { auth } = this.props;
     return (
       <Form onSubmit={e => this.handleLogin(e)}>
+        <h2>Login</h2>
         <Form.Field>
           <label>Email</label>
           <Input

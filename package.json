@@ -7,6 +7,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
+    "electron-react-titlebar": "^0.8.1",
+    "electron-titlebar-windows": "^3.0.0",
     "ent": "^2.2.0",
     "firebase": "^5.0.2",
     "foreman": "^3.0.1",

@@ -7,11 +7,11 @@ const VideoBar = () => {
   return (
     <Segment>
       <Grid verticalAlign="middle">
-        <Grid.Row columns={2} divided>
-          <Grid.Column mobile={8} tablet={8} computer={5}>
+        <Grid.Row columns={2} textAlign="justified">
+          <Grid.Column mobile={8} tablet={5} computer={5}>
             <VideoOptions />
           </Grid.Column>
-          <Grid.Column mobile={8} tablet={8} computer={11}>
+          <Grid.Column mobile={8} tablet={11} computer={11}>
             <VideoTitle />
           </Grid.Column>
         </Grid.Row>

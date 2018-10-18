@@ -443,6 +443,7 @@ h6 {
 /* ITEM {Sem UI} */
 .item {
   font-family: "Play" !important;
+  cursor: default !important;
 }
 .item.divider {
   padding: 0 !important;
@@ -460,6 +461,7 @@ h6 {
 }
 /* Labels */
 .label-clear {
+  cursor:pointer;
   background-color: transparent !important;
   background: transparent !important;
 }
@@ -562,47 +564,16 @@ h6 {
 }
 /* PAGES */
 .page {
-  height: 100vh;
+  height: calc(100vh - 1px);
   /* Combat lowering the main content padding */
   margin-top: -44px;
   position: relative;
   padding: 0;
 }
 .page-primary {
-  padding: 0;
-  margin: 0 !important;
-  height: 100%;
-  width: 100%;
-  background-color: #38597c;
-  position: absolute;
-  top: 0;
-  left: 0;
+  background: linear-gradient(160deg, #38597c 50%,#224264 50%);
 }
-.page-secondary {
-  padding: 0;
-  margin: 0 !important;
-  height: 100%;
-  width: 100%;
-  background: #224264;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-/* Page clips */
-/* Forwardslash :[/] */
-.page-clip-forwardslash-top {
-  clip-path: polygon(0 0, 100% 0%, 100% 42%, 0 84%);
-}
-.page-clip-forwardslash-bottom {
-  clip-path: polygon(0 75%, 100% 25%, 100% 100%, 0 100%);
-}
-/* Backslash :[\] */
-.page-clip-backslash-top {
-  clip-path: polygon(0 0, 100% 0, 100% 84%, 0 42%);
-}
-.page-clip-backslash-bottom {
-  clip-path: polygon(0 25%, 100% 75%, 100% 100%, 0% 100%);
-}
+
 .page-header {
   margin-left: 18px;
   text-align: center;
@@ -717,7 +688,7 @@ h6 {
 .sample-header::after {
   content: "";
   margin: 5px 0;
-  width: 90%;
+  width: 60%;
   height: 2px;
   background-color: #f2f8fc;
   display: block;

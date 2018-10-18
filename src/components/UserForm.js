@@ -20,15 +20,7 @@ class UserForm extends Component {
   render() {
     const { loginForm } = this.state;
     return (
-      <div className="fade-in page">
-        <Grid
-          className="page-primary page-clip-forwardslash-top"
-          padded="horizontally"
-        >
-          <div className="page-header">
-            <h1>{loginForm ? 'Login' : 'SignUp'}</h1>
-          </div>
-        </Grid>
+      <div className="fade-in page page-primary">
         <Segment className="centered-form" raised>
           {loginForm ? (
             <div className="fade-in">
@@ -70,10 +62,6 @@ class UserForm extends Component {
             </div>
           )}
         </Segment>
-        <Grid
-          className="page-secondary page-clip-forwardslash-bottom"
-          padded="horizontally"
-        />
       </div>
     );
   }

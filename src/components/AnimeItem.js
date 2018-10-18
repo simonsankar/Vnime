@@ -8,7 +8,7 @@ const AnimeItem = ({ anime }) => {
       mobile={3}
       tablet={3}
       computer={3}
-      largeScreen={2}
+      largeScreen={3}
       widescreen={2}
       className="fade-in"
     >

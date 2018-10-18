@@ -3,6 +3,8 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 // Bars
 import SideBar from './components/SideBar';
 import MenuBar from './components/MenuBar';
+// import { TitleBar } from 'electron-react-titlebar';
+// import 'electron-react-titlebar/assets/style.css';
 // Pages
 import Home from './components/Home';
 import UserForm from './components/UserForm';

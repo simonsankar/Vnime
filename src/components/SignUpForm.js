@@ -66,6 +66,7 @@ class SignUpForm extends Component {
     const { auth } = this.props;
     return (
       <Form onSubmit={e => this.handleSignUp(e)}>
+        <h2>Sign Up</h2>
         <Form.Field>
           <label>Username</label>
           <Input
