@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     const { location } = this.props;
     return (
-      <div>
+      <div className="resizeable">
         <SideBar />
         <div className="main-content overflowY">
           <MenuBar className="menu-bar" />

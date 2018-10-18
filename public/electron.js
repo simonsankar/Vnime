@@ -20,6 +20,7 @@ function createWindow() {
     center: true,
     frame: false,
     moveable: true,
+    resizeable: true,
     minimizable: true,
     maximizable: true,
     title: 'Vnime'

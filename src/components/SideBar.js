@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { logoutUser } from "../actions/setAuth";
+import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions/setAuth';
 
-import { createMemoryHistory } from "history";
+import { createMemoryHistory } from 'history';
 
-import { Menu, Button } from "semantic-ui-react";
-import SearchBar from "./SearchBar";
+import { Menu, Button } from 'semantic-ui-react';
+import SearchBar from './SearchBar';
 
 class SideBar extends Component {
   history = createMemoryHistory({
-    initialEntries: ["/"], // The initial URLs in the history stack
+    initialEntries: ['/'], // The initial URLs in the history stack
     initialIndex: 0, // The starting index in the history stack
     keyLength: 6, // The length of location.key
     // A function to use to confirm navigation with the user. Required
@@ -20,12 +20,12 @@ class SideBar extends Component {
   });
 
   render() {
-    const activeItem = this.props.location.pathname.replace("/", "");
+    const activeItem = this.props.location.pathname.replace('/', '');
     const { auth, logoutUser } = this.props;
 
     return (
       <Menu secondary vertical fixed="left" inverted className="side-bar">
-        <Menu.Item className="menu-item-header">
+        <Menu.Item className="menu-item-header draggable">
           <Menu.Header className="menu-header">
             VNIME
             <Button
@@ -64,7 +64,7 @@ class SideBar extends Component {
           to="/dashboard"
           name="dashboard"
           icon="user"
-          active={activeItem === "dashboard"}
+          active={activeItem === 'dashboard'}
         />
         <Menu.Item className="divider" />
 
@@ -73,42 +73,42 @@ class SideBar extends Component {
           to="/"
           name="home"
           icon="home"
-          active={activeItem === ""}
+          active={activeItem === ''}
         />
         <Menu.Item
           as={Link}
           to="/updated"
           name="updated"
           icon="refresh"
-          active={activeItem === "updated"}
+          active={activeItem === 'updated'}
         />
         <Menu.Item
           as={Link}
           to="/popular"
           name="popular"
           icon="fire"
-          active={activeItem === "popular"}
+          active={activeItem === 'popular'}
         />
         <Menu.Item
           as={Link}
           to="/trending"
           name="trending"
           icon="line chart"
-          active={activeItem === "trending"}
+          active={activeItem === 'trending'}
         />
         <Menu.Item
           as={Link}
           to="/genres"
           name="genres"
           icon="filter"
-          active={activeItem === "genres"}
+          active={activeItem === 'genres'}
         />
         <Menu.Item
           as={Link}
           to="/schedule"
           name="schedule"
           icon="checked calendar"
-          active={activeItem === "schedule"}
+          active={activeItem === 'schedule'}
         />
         <Menu.Item className="divider" />
         <Menu.Item className="btn-options-container">

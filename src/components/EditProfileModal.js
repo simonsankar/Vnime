@@ -54,7 +54,7 @@ class EditProfileModal extends Component {
           onClick={() => this.show()}
           basic
           circular
-          color="blue"
+          inverted
           icon="pencil"
           floated="right"
           size="mini"
