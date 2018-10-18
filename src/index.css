@@ -250,7 +250,7 @@ h6 {
 .draggable,
 .draggable:hover {
   cursor: -webkit-grab;
-  -webkit-app-region: drag !important;
+  /* -webkit-app-region: drag !important; */
 }
 .draggable:active {
   cursor: -webkit-grabbing;
@@ -553,9 +553,7 @@ h6 {
   font-weight: 600 !important;
   color: #45494d;
 }
-.menu-header>button{
-  font-size: 11px
-}
+
 /* OVERFLOW Y */
 .overflowY {
   overflow-y: scroll;
