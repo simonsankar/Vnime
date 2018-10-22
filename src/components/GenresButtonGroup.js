@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Accordion, Button, Icon, Grid } from "semantic-ui-react";
+import { Accordion, Button, Icon } from "semantic-ui-react";
 
 export default class GenresButtonGroup extends Component {
   state = { activeIndex: -1 };
@@ -19,6 +19,7 @@ export default class GenresButtonGroup extends Component {
         <Accordion.Title
           as={Button}
           basic
+          size={"tiny"}
           active={activeIndex === 0}
           index={0}
           onClick={this.handleClick}

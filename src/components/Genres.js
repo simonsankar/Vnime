@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Dropdown, Segment, Divider } from "semantic-ui-react";
+import { Grid, Dropdown, Segment, Divider, Button } from "semantic-ui-react";
 
 import HeaderBar from "./HeaderBar";
 import GenresButtonGroup from "./GenresButtonGroup";
@@ -23,6 +23,17 @@ class Genres extends Component {
       { key: "completed", value: "completed", text: "Completed" }
     ]
   };
+
+  handleSortChange = (e, { value }) => {
+    console.log(value);
+  };
+  handleTypeChange = (e, props) => {
+    console.log(props.defaultValue);
+  };
+  handleStatusChange = (e, props) => {
+    console.log(props);
+  };
+
   render() {
     return (
       <div>
@@ -34,19 +45,21 @@ class Genres extends Component {
                 <Grid columns={"equal"}>
                   <Grid.Column>
                     <Dropdown
-                      fluid={false}
                       placeholder="Sort by"
                       fluid
                       selection
                       options={this.state.sort}
+                      onChange={this.handleSortChange}
                     />
                   </Grid.Column>
                   <Grid.Column>
                     <Dropdown
+                      defaultValue={this.state.type[0].value}
                       placeholder="Type"
                       fluid
                       selection
                       options={this.state.type}
+                      onChange={this.handleTypeChange}
                     />
                   </Grid.Column>
                   <Grid.Column>
@@ -55,6 +68,7 @@ class Genres extends Component {
                       fluid
                       selection
                       options={this.state.status}
+                      onChange={this.handleStatusChange}
                     />
                   </Grid.Column>
                 </Grid>
