@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import { Grid, Segment, Message, Button } from 'semantic-ui-react';
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
+import { Segment, Message, Button } from "semantic-ui-react";
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
 
 class UserForm extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class UserForm extends Component {
               <Message size="mini" info>
                 <Message.Header>No account?</Message.Header>
                 <p>
-                  Then you probably might want to{' '}
+                  Then you probably might want to{" "}
                   <Button
                     basic
                     color="green"
@@ -47,7 +47,7 @@ class UserForm extends Component {
               <Message size="mini" info>
                 <Message.Header>Got an account already?</Message.Header>
                 <p>
-                  Then why don't you try to{' '}
+                  Then why don't you try to{" "}
                   <Button
                     basic
                     color="blue"
