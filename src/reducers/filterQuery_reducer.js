@@ -4,9 +4,11 @@ const queryFilter = (state = null, action) => {
   switch (action.type) {
     case UPDATE_FILTER_QUERY:
       if (action.payload) return action.payload;
-      else return [];
+      else return false;
     case RESET_FILTER_QUERY:
       return null;
+    default:
+      return state;
   }
 };
 

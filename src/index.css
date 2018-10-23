@@ -631,7 +631,9 @@ h6 {
 .result > a {
   height: 100%;
   width: 100%;
-  padding-bottom: 40px; /* color: #24292e !important; */
+  padding-bottom: 40px;
+  color: #24292e !important;
+  font-size: 11px;
 }
 .ui.search > .results .result .image {
   float: left;
@@ -641,6 +643,10 @@ h6 {
   height: 4em;
   border-radius: 0.25em;
 }
+::-webkit-input-placeholder {
+  color: #45494d !important;
+}
+
 /* Rotating */
 .rotating {
   -webkit-animation: rotating 3s linear infinite;
