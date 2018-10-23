@@ -298,6 +298,16 @@ h6 {
   margin-top: 25px;
   font-size: 25px;
 }
+
+/* FOOTER */
+.footer {
+  background-color: #202529;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  height: auto;
+  padding: 20px 45px !important;
+}
 /* HEADER */
 .header-main {
   /*Home VNIME*/
