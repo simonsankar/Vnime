@@ -63,8 +63,12 @@ class Home extends Component {
             ""
           )}
         </Grid.Row>
-        <Grid.Row className="footer" columns={3}>
-          <Grid.Column textAlign="center">
+        <Grid.Row className="footer">
+          <Grid.Column width={10}>
+            <h3>Vnime</h3>
+            <p>Vnime was built with Silk Touch I</p>
+          </Grid.Column>
+          <Grid.Column width={6}>
             <List>
               <List.Item>
                 <List.Icon name="hand peace" />
@@ -89,25 +93,6 @@ class Home extends Component {
                 </List.Content>
               </List.Item>
             </List>
-          </Grid.Column>
-          <Grid.Column textAlign="center">
-            <List>
-              <List.Item>
-                <List.Icon name="react" />
-                <List.Content>ReactJS</List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Icon name="js" />
-                <List.Content>ElectronJS</List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Icon name="database" />
-                <List.Content>Firebase</List.Content>
-              </List.Item>
-            </List>
-          </Grid.Column>
-          <Grid.Column textAlign="center">
-            <p>Blah blah</p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
