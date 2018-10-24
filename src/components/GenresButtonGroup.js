@@ -11,9 +11,9 @@ export default class GenresButtonGroup extends Component {
     const { index } = titleProps;
     const { activeIndex } = this.state;
     const newIndex = activeIndex === index ? -1 : index;
-
     this.setState({ activeIndex: newIndex });
   };
+
   // Breaks genres into rows of 7
   makeGenresChunks(arr) {
     const chunks = _.chunk(arr, 7);
