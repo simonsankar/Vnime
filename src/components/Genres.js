@@ -4,26 +4,9 @@ import { Grid, Dropdown, Segment, Divider, Button } from "semantic-ui-react";
 import HeaderBar from "./HeaderBar";
 import GenresButtonGroup from "./GenresButtonGroup";
 
-class Genres extends Component {
-  state = {
-    sort: [
-      { key: "a-z", value: "something", text: "A-Z" },
-      { key: "z-a", value: "something2", text: "Z-A" },
-      { key: "highest", value: "something3", text: "Highest" },
-      { key: "lowest", value: "something5", text: "Lowest" }
-    ],
-    type: [
-      { key: "tv", value: "tv", text: "TV" },
-      { key: "ova", value: "ova", text: "OVA" },
-      { key: "ona", value: "ona", text: "ONA" },
-      { key: "special", value: "special", text: "Special" }
-    ],
-    status: [
-      { key: "ongoing", value: "ongoing", text: "Ongoing" },
-      { key: "completed", value: "completed", text: "Completed" }
-    ]
-  };
+import { filterOptions } from "../common/filterOptions";
 
+class Genres extends Component {
   handleSortChange = (e, { value }) => {
     console.log(value);
   };
@@ -48,26 +31,26 @@ class Genres extends Component {
                       placeholder="Sort by"
                       fluid
                       selection
-                      options={this.state.sort}
+                      defaultValue={filterOptions.orderOptions[0].value}
+                      options={filterOptions.orderOptions}
                       onChange={this.handleSortChange}
                     />
                   </Grid.Column>
                   <Grid.Column>
                     <Dropdown
-                      defaultValue={this.state.type[0].value}
-                      placeholder="Type"
+                      placeholder="Type - All"
                       fluid
                       selection
-                      options={this.state.type}
+                      options={filterOptions.typeOptions}
                       onChange={this.handleTypeChange}
                     />
                   </Grid.Column>
                   <Grid.Column>
                     <Dropdown
-                      placeholder="Status"
+                      placeholder="Status - All"
                       fluid
                       selection
-                      options={this.state.status}
+                      options={filterOptions.statusOptions}
                       onChange={this.handleStatusChange}
                     />
                   </Grid.Column>

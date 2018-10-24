@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import _ from "lodash";
 import { Accordion, Button, Icon } from "semantic-ui-react";
 
+import { filterOptions } from "../common/filterOptions";
 export default class GenresButtonGroup extends Component {
   state = { activeIndex: -1 };
 
@@ -12,8 +14,31 @@ export default class GenresButtonGroup extends Component {
 
     this.setState({ activeIndex: newIndex });
   };
+  // Breaks genres into rows of 7
+  makeGenresChunks(arr) {
+    const chunks = _.chunk(arr, 7);
+    return chunks;
+  }
+
   render() {
     const { activeIndex } = this.state;
+    const genreButtons = this.makeGenresChunks(filterOptions.genreOptions).map(
+      (range, index) => {
+        return (
+          <Button.Group key={index} basic size="mini" widths={7}>
+            {range.map((el, index) => (
+              <Button
+                onClick={(e, props) => console.log(props)}
+                value={el.value}
+                key={el.value}
+              >
+                {el.text}
+              </Button>
+            ))}
+          </Button.Group>
+        );
+      }
+    );
     return (
       <Accordion>
         <Accordion.Title
@@ -28,60 +53,7 @@ export default class GenresButtonGroup extends Component {
           <Icon name="dropdown" />
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
-          <Button.Group basic size="mini" widths={7}>
-            <Button>Action</Button>
-            <Button>Adventure</Button>
-            <Button>Cars</Button>
-            <Button>Comedy</Button>
-            <Button>Dementia</Button>
-            <Button>Demons</Button>
-            <Button>Drama</Button>
-          </Button.Group>
-          <Button.Group basic widths={7} size="mini">
-            <Button>Ecchi</Button>
-            <Button>Fantasy</Button>
-            <Button>Game</Button>
-            <Button>Harem</Button>
-            <Button>Historical</Button>
-            <Button>Horror</Button>
-            <Button>Josei</Button>
-          </Button.Group>
-          <Button.Group basic widths={7} size="mini">
-            <Button>Kids</Button>
-            <Button>Magic</Button>
-            <Button>Martial Arts</Button>
-            <Button>Mecha</Button>
-            <Button>Military</Button>
-            <Button>Music</Button>
-            <Button>Mystery</Button>
-          </Button.Group>
-          <Button.Group basic widths={7} size="mini">
-            <Button>Parody</Button>
-            <Button>Police</Button>
-            <Button>Psychological</Button>
-            <Button>Romance</Button>
-            <Button>Samurai</Button>
-            <Button>School</Button>
-            <Button>Sci-Fi</Button>
-          </Button.Group>
-          <Button.Group basic widths={7} size="mini">
-            <Button>Seinen</Button>
-            <Button>Shoujo</Button>
-            <Button>Shoujo Ai</Button>
-            <Button>Shounen</Button>
-            <Button>Shounen Ai</Button>
-            <Button>Slice of Life</Button>
-            <Button>Space</Button>
-          </Button.Group>
-          <Button.Group basic widths={7} size="mini">
-            <Button>Sports</Button>
-            <Button>Super Power</Button>
-            <Button>Supernatural</Button>
-            <Button>Thriller</Button>
-            <Button>Vampire</Button>
-            <Button>Yaoi</Button>
-            <Button>Yuri</Button>
-          </Button.Group>
+          {genreButtons}
         </Accordion.Content>
       </Accordion>
     );
