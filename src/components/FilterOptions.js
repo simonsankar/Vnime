@@ -7,7 +7,7 @@ import { Grid, Segment, Dropdown, Divider } from "semantic-ui-react";
 import GenresButtonGroup from "./GenresButtonGroup";
 import { filterOptions } from "../common/filterOptions";
 
-export default class FilterOptions extends Component {
+class FilterOptions extends Component {
   handleSortChange = (e, { value }) => {
     console.log(value);
   };
@@ -64,3 +64,5 @@ export default class FilterOptions extends Component {
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ updateFilterQuery, resetFilterQuery }, dispatch);
+
+export default FilterOptions;
