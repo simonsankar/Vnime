@@ -9,7 +9,7 @@ class Genres extends Component {
     return (
       <div>
         <Grid padded="horizontally">
-          <HeaderBar text={"Filter Animes | In development"} />
+          <HeaderBar text={"Filter Animes"} />
           <FilterOptions />
         </Grid>
       </div>

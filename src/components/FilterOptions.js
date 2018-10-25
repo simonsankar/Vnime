@@ -8,14 +8,14 @@ import GenresButtonGroup from "./GenresButtonGroup";
 import { filterOptions } from "../common/filterOptions";
 
 class FilterOptions extends Component {
-  handleSortChange = (e, { value }) => {
-    console.log(value);
-  };
-  handleTypeChange = (e, { value }) => {
-    console.log(value);
-  };
-  handleStatusChange = (e, { value }) => {
-    console.log(value);
+  state = {
+    query: {
+      order: "",
+      type: "",
+      status: "",
+      genres: [],
+      page: ""
+    }
   };
 
   render() {
@@ -31,7 +31,6 @@ class FilterOptions extends Component {
                   selection
                   defaultValue={filterOptions.orderOptions[0].value}
                   options={filterOptions.orderOptions}
-                  onChange={this.handleSortChange}
                 />
               </Grid.Column>
               <Grid.Column>
@@ -40,7 +39,6 @@ class FilterOptions extends Component {
                   fluid
                   selection
                   options={filterOptions.typeOptions}
-                  onChange={this.handleTypeChange}
                 />
               </Grid.Column>
               <Grid.Column>
@@ -49,7 +47,6 @@ class FilterOptions extends Component {
                   fluid
                   selection
                   options={filterOptions.statusOptions}
-                  onChange={this.handleStatusChange}
                 />
               </Grid.Column>
             </Grid>
@@ -62,7 +59,12 @@ class FilterOptions extends Component {
   }
 }
 
+const mapStateToProps = ({ filterQuery }) => ({ filterQuery });
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ updateFilterQuery, resetFilterQuery }, dispatch);
 
-export default FilterOptions;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FilterOptions);

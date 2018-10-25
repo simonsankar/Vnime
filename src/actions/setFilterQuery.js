@@ -1,5 +1,6 @@
 import { UPDATE_FILTER_QUERY, RESET_FILTER_QUERY } from "./types";
 import Masterani from "../api/masterani";
+import { request } from "http";
 
 /*
 Incoming Query structure:
@@ -12,10 +13,9 @@ Incoming Query structure:
     }
 */
 export const updateFilterQuery = query => {
-  const request = Masterani.getFilteredAnimes(query);
   return {
     type: UPDATE_FILTER_QUERY,
-    payload: request
+    payload: query
   };
 };
 
