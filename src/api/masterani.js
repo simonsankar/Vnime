@@ -276,9 +276,7 @@ const Masterani = {
   },
   // Anime in detail
   async getAnime(id) {
-    let tempURL = FULL_URLX;
-    if (id === 64) tempURL = FULL_URL; //Sometimes it doesnt work with the main proxy
-    const { data } = await axios.get(`${tempURL}${anime}${id}${detailed}`);
+    const { data } = await axios.get(`${FULL_URL}${anime}${id}${detailed}`);
     data.poster = `${large}${data.poster}`;
 
     if (data.wallpapers.length > 1) {
