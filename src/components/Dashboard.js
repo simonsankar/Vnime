@@ -55,7 +55,7 @@ class Dashboard extends Component {
               />
               {user !== null && user.username}
             </span>
-            {user !== null && user.username ? (
+            {user !== null && user.username && auth && auth.loggedIn ? (
               <EditProfileModal
                 uid={auth.response.uid}
                 username={user.username}
