@@ -3,6 +3,7 @@ import {
   GET_POPULAR_ANIMES,
   GET_TRENDING_ANIMES,
   GET_FILTERED_ANIMES,
+  RESET_FILTERED_ANIMES,
   RESET_ANIMES
 } from './types';
 import Masterani from '../api/masterani';
@@ -28,12 +29,15 @@ export const getTrendingAnimes = () => {
     payload: request
   };
 };
-export const getFilterdAnimes = query => {
+export const getFilteredAnimes = query => {
   const request = Masterani.getFilteredAnimes(query);
   return {
     type: GET_FILTERED_ANIMES,
     payload: request
   };
+};
+export const resetFilteredAnimes = () => {
+  return { type: RESET_FILTERED_ANIMES };
 };
 
 export const resetAnimes = () => {

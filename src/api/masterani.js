@@ -96,20 +96,48 @@ const Masterani = {
     return animes;
   },
   // Filtered Animes
-  async getFilteredAnimes(odr, typ, sts, gnr, pg) {
+  async getFilteredAnimes(qry) {
+    console.log('Query', qry);
     //Order type status page
     const query = {};
-    query.order = odr !== undefined ? `${order}${odr}&` : `${order}score_desc`;
-    query.type = typ !== undefined ? `${type}${typ}&` : '';
-    query.status = sts !== undefined ? `${status}${sts}&` : '';
-    query.page = pg !== undefined ? `${page}${pg}` : `${page}${'1'}`;
+    query.order =
+      qry.odr !== null ? `${order}${qry.odr}&` : `${order}score_desc&`;
+    query.type = qry.typ !== -1 ? `${type}${qry.typ}&` : '';
+    query.status = qry.sts !== -1 ? `${status}${qry.sts}&` : '';
+    query.page = qry.pg !== -1 ? `${page}${qry.pg}` : `${page}${'1'}`;
+    if (qry.gnr.length > 0) {
+      query.genres = `${genres}`;
+      for (let i = 0; i < qry.gnr.length; i++) {
+        if (i === qry.gnr.length - 1)
+          query.genres = `${query.genres}${qry.gnr[i]}&`;
+        else query.genres = `${query.genres}${qry.gnr[i]},`;
+      }
+    } else {
+      query.genres = '';
+    }
+    console.log(query.genres);
 
-    const { data } = await axios.get(
-      `${FULL_URLX}${anime}${filter}${query.order}${query.type}${
-        query.status
-      }&page=1`
-    );
-    console.log('Filtered', data);
+    const tempURL = `${FULL_URLX}${anime}${filter}${query.order}${query.type}${
+      query.status
+    }${query.genres}${query.page}`;
+
+    const { data } = await axios.get(tempURL);
+    const animes = data.data.map((el, index) => {
+      const img = `${medium}${el.poster.file}`;
+      const id = el.slug.substr(0, el.slug.indexOf('-'));
+      const anime = {
+        anime: {
+          poster: img,
+          title: el.title
+        },
+        url: `/watch/${id}`,
+        extra: el.total
+      };
+      return anime;
+    });
+    data.data = animes;
+
+    console.log('Filtered', tempURL, data);
     return data;
   },
   async getPopularAndTrendingAnimes() {
@@ -324,7 +352,5 @@ const Masterani = {
     return suggestions;
   }
 };
-
-Masterani.getFilteredAnimes('title', '4');
 
 export default Masterani;

@@ -38,6 +38,9 @@ h6 {
 .ui.button {
   font-family: "Play" !important;
 }
+.btn-page{
+  padding:4px !important;
+}
 .btn-options-container {
   position: absolute !important;
   bottom: 0 !important;
@@ -573,6 +576,7 @@ h6 {
 .padding-fix {
   padding: 0px 1rem !important;
 }
+
 /* PAGES */
 .page {
   height: calc(100vh - 1px);
@@ -654,7 +658,7 @@ h6 {
   border-radius: 0.25em;
 }
 ::-webkit-input-placeholder {
-  color: #45494d !important;
+  color: #55585c !important;
 }
 
 /* Rotating */

@@ -2,7 +2,6 @@ import {
   GET_UPDATED_ANIMES,
   GET_POPULAR_ANIMES,
   GET_TRENDING_ANIMES,
-  GET_FILTERED_ANIMES,
   RESET_ANIMES
 } from '../actions/types';
 
@@ -11,7 +10,6 @@ const animes = (state = null, action) => {
     case GET_UPDATED_ANIMES:
     case GET_POPULAR_ANIMES:
     case GET_TRENDING_ANIMES:
-    case GET_FILTERED_ANIMES:
       if (action.error === true) {
         console.log('Error:', action.error);
         return false;

@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import _ from "lodash";
-import { Accordion, Button, Icon } from "semantic-ui-react";
+import React, { Component } from 'react';
+import _ from 'lodash';
+import { Accordion, Icon, Button } from 'semantic-ui-react';
+import GenreButton from './GenreButton';
 
-import { filterOptions } from "../common/filterOptions";
+import { filterOptions } from '../common/filterOptions';
+
 export default class GenresButtonGroup extends Component {
   state = { activeIndex: -1 };
 
@@ -27,13 +29,7 @@ export default class GenresButtonGroup extends Component {
         return (
           <Button.Group key={index} basic size="mini" widths={7}>
             {range.map((el, index) => (
-              <Button
-                onClick={(e, props) => console.log(props)}
-                value={el.value}
-                key={el.value}
-              >
-                {el.text}
-              </Button>
+              <GenreButton key={index + 'btn'} el={el} />
             ))}
           </Button.Group>
         );
@@ -44,7 +40,7 @@ export default class GenresButtonGroup extends Component {
         <Accordion.Title
           as={Button}
           basic
-          size={"tiny"}
+          size={'tiny'}
           active={activeIndex === 0}
           index={0}
           onClick={this.handleClick}
