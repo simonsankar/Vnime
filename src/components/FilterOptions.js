@@ -147,7 +147,7 @@ class FilterOptions extends Component {
   };
 
   render() {
-    const { filteredAnimes, sort, type, status, genres, page } = this.props;
+    const { filteredAnimes, sort, type, status, page } = this.props;
 
     return (
       <Grid.Row>

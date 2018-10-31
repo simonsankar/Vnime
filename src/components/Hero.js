@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, List, Label, Divider } from 'semantic-ui-react';
 
-const Hero = ({ anime }) => {
+import { Grid, List, Divider } from 'semantic-ui-react';
+import GenreLabel from './GenreLabel';
+const Hero = ({ anime, setGenresOption }) => {
   return (
     <div
       className="hero fade-in"
@@ -24,11 +24,7 @@ const Hero = ({ anime }) => {
           </h1>
           <List horizontal size="mini">
             {anime.genres.map(el => (
-              <List.Item as={Link} to={`/genres`} key={el.id}>
-                <Label size="tiny" className="label-clear" basic>
-                  {el.name}
-                </Label>
-              </List.Item>
+              <GenreLabel el={el} key={el.id} />
             ))}
           </List>
           <Divider hidden />
