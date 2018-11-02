@@ -39,7 +39,8 @@ class Watch extends Component {
       <div
         style={{
           backgroundColor: '#f2f8fc',
-          minHeight: '100vh'
+          minHeight: '180vh',
+          paddingBottom:'40px'
         }}
       >
         {anime !== null && anime !== false ? (
