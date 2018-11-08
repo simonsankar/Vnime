@@ -627,6 +627,11 @@ h6 {
   text-align: center;
   transform: translate(-50%, -30%);
 }
+.page-watch{
+  background-color: #f2f8fc;
+  min-height: 180vh;
+  padding-bottom:40px; 
+}
 /* PULL right */
 .pullright {
   float: right;
