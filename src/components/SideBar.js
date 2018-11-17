@@ -6,7 +6,7 @@ import { logoutUser } from '../actions/setAuth';
 
 import { createMemoryHistory } from 'history';
 
-import { Menu, Button } from 'semantic-ui-react';
+import { Menu, Button, Popup } from 'semantic-ui-react';
 import SearchBar from './SearchBar';
 
 class SideBar extends Component {
@@ -113,23 +113,37 @@ class SideBar extends Component {
         <Menu.Item className="divider" />
         <Menu.Item className="btn-options-container">
           {!auth || auth & !auth.loggedIn ? (
-            <Button
-              className="btn-auth"
-              floated="right"
-              color="blue"
+            <Popup
+              basic
               size="mini"
-              icon="sign in"
-              as={Link}
-              to="/login"
+              trigger={
+                <Button
+                  className="btn-auth"
+                  floated="right"
+                  color="blue"
+                  size="mini"
+                  icon="sign in"
+                  as={Link}
+                  to="/login"
+                />
+              }
+              content="Login"
             />
           ) : (
-            <Button
-              className="btn-auth"
-              floated="right"
-              color="blue"
+            <Popup
+              basic
               size="mini"
-              icon="sign out"
-              onClick={() => logoutUser()}
+              trigger={
+                <Button
+                  className="btn-auth"
+                  floated="right"
+                  color="blue"
+                  size="mini"
+                  icon="sign out"
+                  onClick={() => logoutUser()}
+                />
+              }
+              content="Logout"
             />
           )}
         </Menu.Item>

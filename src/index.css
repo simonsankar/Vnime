@@ -13,12 +13,12 @@ Colours
 
 @font-face {
   font-family: TrueLies;
-  src: url("./fonts/True Lies.ttf");
+  src: url('./fonts/True Lies.ttf');
 }
 
 html,
 body {
-  font-family: "Play", sans-serif !important;
+  font-family: 'Play', sans-serif !important;
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -31,15 +31,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Play", sans-serif !important;
+  font-family: 'Play', sans-serif !important;
 }
 
 /* btn */
 .ui.button {
-  font-family: "Play" !important;
+  font-family: 'Play' !important;
 }
-.btn-page{
-  padding:4px !important;
+.btn-page {
+  padding: 4px !important;
 }
 .btn-options-container {
   position: absolute !important;
@@ -244,7 +244,7 @@ h6 {
 }
 /* DIVIDE */
 .divide {
-  content: "";
+  content: '';
   height: 10px;
   margin: 0 7px;
   border-right: 1px #777 solid;
@@ -338,7 +338,7 @@ h6 {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
   font-weight: 500 !important;
-  font-family: "Play" !important;
+  font-family: 'Play' !important;
 }
 .header-section-primary {
   color: #f2f8fc !important;
@@ -352,7 +352,7 @@ h6 {
   color: #f2f8fc !important;
 }
 .header-section-primary::after {
-  content: "";
+  content: '';
   width: 40px;
   height: 3px;
   background: #f2f8fc;
@@ -360,7 +360,7 @@ h6 {
   margin: 10px 0 0 3px;
 }
 .header-section-secondary::after {
-  content: "";
+  content: '';
   width: 20px;
   height: 2px;
   background: #f2f8fc;
@@ -368,7 +368,7 @@ h6 {
   margin: 5px 0 0 3px;
 }
 .header-section-home::after {
-  content: "";
+  content: '';
   width: 20px;
   height: 6px;
   background: #f2f8fc;
@@ -377,7 +377,7 @@ h6 {
 }
 .ui.header,
 .header {
-  font-family: "Play" !important;
+  font-family: 'Play' !important;
 }
 /* HEIGHT UTIL */
 .height-big {
@@ -440,9 +440,22 @@ h6 {
 .home-section-secondary {
   background-color: #224264;
 }
+.home-section-particles {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  min-height: calc(100vh - 31px);
+}
 .home-section-header {
   position: absolute;
-  top: 35% !important;
+  z-index: 999;
+}
+.home-section-header-wrapper {
+  background-color: #38597c;
+  position: absolute !important;
+  width: 100% !important;
+  margin-left: 70px;
+  top: 35%;
 }
 .home-section-header > h1 {
   font-size: 60px;
@@ -455,7 +468,7 @@ h6 {
 }
 /* ITEM {Sem UI} */
 .item {
-  font-family: "Play" !important;
+  font-family: 'Play' !important;
   cursor: default !important;
 }
 .item.divider {
@@ -601,17 +614,17 @@ h6 {
 }
 .page-header > h1 {
   font-size: 85px !important;
-  font-family: "Play" !important;
+  font-family: 'Play' !important;
   font-weight: 400 !important;
   letter-spacing: 36px;
 }
 .page-header > h2 {
-  font-family: "Play" !important;
+  font-family: 'Play' !important;
   font-weight: 300 !important;
   letter-spacing: 26px;
 }
 .page-header::after {
-  content: "";
+  content: '';
   width: 125px;
   height: 6px;
   background: #f2f8fc;
@@ -716,9 +729,9 @@ h6 {
   font-weight: 200;
 }
 .sample-header::after {
-  content: "";
+  content: '';
   margin: 5px 0;
-  width: 60%;
+  width: 20%;
   height: 2px;
   background-color: #f2f8fc;
   display: block;
@@ -732,7 +745,7 @@ h6 {
   overflow-y: scroll;
 }
 .searchBar > .ui.input > input {
-  font-family: "Play" !important;
+  font-family: 'Play' !important;
   font-size: 13px;
 }
 .searchBar > .ui.input > input::placeholder {
@@ -794,7 +807,7 @@ h6 {
   height: 100vh;
   padding-bottom: 1em;
   background: rgb(36, 41, 46) !important;
-  font-family: "Play", sans-serif !important;
+  font-family: 'Play', sans-serif !important;
 }
 .side-details {
   z-index: 1;

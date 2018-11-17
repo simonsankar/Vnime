@@ -276,7 +276,7 @@ const Masterani = {
   },
   // Anime in detail
   async getAnime(id) {
-    const { data } = await axios.get(`${FULL_URL}${anime}${id}${detailed}`);
+    const { data } = await axios.get(`${FULL_URLX}${anime}${id}${detailed}`);
     data.poster = `${large}${data.poster}`;
 
     if (data.wallpapers.length > 1) {

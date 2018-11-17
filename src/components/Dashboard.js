@@ -102,7 +102,7 @@ class Dashboard extends Component {
               )}
             </Grid>
           </Grid.Column>
-          <Grid.Column width={4}>Friends</Grid.Column>
+          <Grid.Column width={4}>Last Watched</Grid.Column>
         </Grid.Row>
       </Grid>
     );
