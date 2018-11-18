@@ -47,10 +47,10 @@ function createWindow() {
   });
 
   mainWindow.webContents.on('will-navigate', event => {
-    console.log(event);
-    event.preventDefault();
-    let link = event.target.href;
-    shell.openExternal(link);
+    // console.log(event);
+    // event.preventDefault();
+    // let link = event.target.href;
+    // shell.openExternal(link);
   });
 }
 

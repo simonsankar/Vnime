@@ -3,10 +3,10 @@ import cheerio from 'cheerio';
 import _ from 'lodash';
 import { parseScript } from 'shift-parser';
 
-const CORS = 'https://cors-anywhere.herokuapp.com/';
+// const CORS = 'https://cors-anywhere.herokuapp.com/';
 const CORSX = 'https://secret-ocean-49799.herokuapp.com/';
 const BASE_URL = 'https://www.masterani.me';
-const FULL_URL = `${CORS}${BASE_URL}`;
+// const FULL_URL = `${CORS}${BASE_URL}`;
 const FULL_URLX = `${CORSX}${BASE_URL}`;
 
 // Bulk Anime

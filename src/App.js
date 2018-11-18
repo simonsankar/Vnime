@@ -17,19 +17,12 @@ import Trending from './components/Trending';
 import Watch from './components/Watch';
 
 class App extends Component {
-  componentDidMount() {
-    console.log(this.props.location);
-  }
-  componentDidUpdate(prevProps) {
-    if (prevProps.location !== this.props.location)
-      console.log(this.props.location);
-  }
   render() {
     const { location } = this.props;
     return (
       <div className="resizeable">
         <SideBar />
-        <div className="main-content overflowY">
+        <div id="main-content" className="main-content overflowY">
           <MenuBar className="menu-bar" />
           <div className="lower-content">
             <Switch>
