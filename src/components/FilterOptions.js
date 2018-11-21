@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { getFilteredAnimes, resetFilteredAnimes } from '../actions/getAnimes';
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { getFilteredAnimes, resetFilteredAnimes } from "../actions/getAnimes";
 import {
   setGenresOption,
   resetGenresOption,
@@ -13,31 +13,32 @@ import {
   resetTypeOption,
   setPageOption,
   resetPageOption
-} from '../actions/setFilterQuery';
+} from "../actions/setFilterQuery";
 import {
   Grid,
   Segment,
   Dropdown,
   Divider,
   Button,
-  Icon
-} from 'semantic-ui-react';
+  Icon,
+  Loader
+} from "semantic-ui-react";
 
-import GenresButtonGroup from './GenresButtonGroup';
-import { filterOptions } from '../common/filterOptions';
+import GenresButtonGroup from "./GenresButtonGroup";
+import { filterOptions } from "../common/filterOptions";
 
 class FilterOptions extends Component {
   componentDidMount() {
     const { sort, type, status, genres, page } = this.props;
 
-    this.props.setSortOption(sort || 'score_desc');
+    this.props.setSortOption(sort || "score_desc");
     this.props.setTypeOption(type || -1);
     this.props.setStatusOption(status || -1);
     this.props.setPageOption(page || 1);
     this.props.setGenresOption(genres || []);
 
     this.props.getFilteredAnimes({
-      odr: sort || 'score_desc',
+      odr: sort || "score_desc",
       typ: type || -1,
       sts: status || -1,
       pg: page || 1,
@@ -152,8 +153,8 @@ class FilterOptions extends Component {
     return (
       <Grid.Row>
         <Grid.Column>
-          <Segment color="black">
-            <Grid columns={'equal'}>
+          <Segment>
+            <Grid columns={"equal"}>
               <Grid.Column>
                 <Dropdown
                   onChange={this.handleSortChange}
@@ -229,7 +230,7 @@ class FilterOptions extends Component {
                     </Button>
                   </Button.Group>
                 ) : (
-                  <p>...</p>
+                  <Loader active size="medium" inline="centered" />
                 )}
               </Grid.Column>
             </Grid>
