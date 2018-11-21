@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import {
   getPopularAndTrendingAnimes,
   resetPopularAndTrendingAnimes
-} from '../actions/getPopularAndTrendingAnimes';
+} from "../actions/getPopularAndTrendingAnimes";
 
-import { Grid, Divider, List } from 'semantic-ui-react';
-import SampleList from './SampleList';
-import Particles from 'react-particles-js';
+import { Grid, Divider, List, Button } from "semantic-ui-react";
+import SampleList from "./SampleList";
+import Particles from "react-particles-js";
 
 class Home extends Component {
   componentWillMount() {
@@ -22,18 +22,18 @@ class Home extends Component {
   render() {
     const { sampleAnimes, auth } = this.props;
     return (
-      <Grid className="home">
+      <Grid className="home" stackable>
         <Grid.Row className="home-section-particles">
           <Particles
             className="fade-in"
             style={{
-              backgroundColor: '#38597c',
-              width: '100%',
-              height: '100%',
-              zIndex: '1',
-              position: 'absolute',
-              top: '0',
-              bottom: '0'
+              backgroundColor: "#38597c",
+              width: "100%",
+              height: "100%",
+              zIndex: "1",
+              position: "absolute",
+              top: "0",
+              bottom: "0"
             }}
             params={{
               particles: {
@@ -45,19 +45,19 @@ class Home extends Component {
                   }
                 },
                 color: {
-                  value: '#ffffff'
+                  value: "#ffffff"
                 },
                 shape: {
-                  type: 'circle',
+                  type: "circle",
                   stroke: {
                     width: 0,
-                    color: '#000000'
+                    color: "#000000"
                   },
                   polygon: {
                     nb_sides: 7
                   },
                   image: {
-                    src: 'img/github.svg',
+                    src: "img/github.svg",
                     width: 100,
                     height: 100
                   }
@@ -85,17 +85,17 @@ class Home extends Component {
                 line_linked: {
                   enable: true,
                   distance: 144.30708547789706,
-                  color: '#ffffff',
+                  color: "#ffffff",
                   opacity: 0.10422178395625899,
                   width: 0
                 },
                 move: {
                   enable: true,
                   speed: 3,
-                  direction: 'none',
+                  direction: "none",
                   random: true,
                   straight: false,
-                  out_mode: 'out',
+                  out_mode: "out",
                   bounce: false,
                   attract: {
                     enable: false,
@@ -105,15 +105,15 @@ class Home extends Component {
                 }
               },
               interactivity: {
-                detect_on: 'canvas',
+                detect_on: "canvas",
                 events: {
                   onhover: {
                     enable: true,
-                    mode: 'bubble'
+                    mode: "bubble"
                   },
                   onclick: {
                     enable: false,
-                    mode: 'repulse'
+                    mode: "repulse"
                   },
                   resize: true
                 },
@@ -172,7 +172,7 @@ class Home extends Component {
               <SampleList text="Popular Today" animes={sampleAnimes.popular} />
             </div>
           ) : (
-            ''
+            ""
           )}
           <Divider />
           {sampleAnimes !== null ? (
@@ -183,39 +183,54 @@ class Home extends Component {
               />
             </div>
           ) : (
-            ''
+            ""
           )}
         </Grid.Row>
         <Grid.Row className="footer">
           <Grid.Column width={10}>
-            <h3>Vnime</h3>
+            <h4>Vnime 2018&copy;</h4>
             <p>Vnime was built with Silk Touch I</p>
           </Grid.Column>
           <Grid.Column width={6}>
+            <h4>Built using</h4>
             <List>
               <List.Item>
-                <List.Icon name="hand peace" />
-                <List.Content>Vnime</List.Content>
+                <List.Icon name="react" />
+                <List.Content>ReactJS</List.Content>
               </List.Item>
               <List.Item>
-                <List.Icon name="marker" />
-                <List.Content>D'Abadie, TT</List.Content>
+                <List.Icon name="js" />
+                <List.Content>ElectronJS</List.Content>
               </List.Item>
               <List.Item>
-                <List.Icon name="mail" />
-                <List.Content>
-                  <a href="mailto:sjsankar10@gmail.com">sjsankar10@gmail.com</a>
-                </List.Content>
+                <List.Icon name="stripe s" />
+                <List.Content>SemanticUI</List.Content>
               </List.Item>
               <List.Item>
-                <List.Icon name="github" />
-                <List.Content>
-                  <a href="https://github.com/simonsankar/Vnime">
-                    github.com/simonsankar/vnime
-                  </a>
-                </List.Content>
+                <List.Icon name="database" />
+                <List.Content>Firebase</List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Icon name="play" />
+                <List.Content>Masterani.me</List.Content>
               </List.Item>
             </List>
+          </Grid.Column>
+          <Grid.Column width={4} textAlign="center">
+            <Button icon="vuejs" circular />
+            <p>Vnime 2018&copy;</p>
+          </Grid.Column>
+          <Grid.Column width={4} textAlign="center">
+            <Button icon="location arrow" circular />
+            <p>D'Abadie,TT</p>
+          </Grid.Column>
+          <Grid.Column width={4} textAlign="center">
+            <Button icon="mail" circular />
+            <p>Email</p>
+          </Grid.Column>
+          <Grid.Column width={4} textAlign="center">
+            <Button icon="github" circular />
+            <p>Github</p>
           </Grid.Column>
         </Grid.Row>
       </Grid>
