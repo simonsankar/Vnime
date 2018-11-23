@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   GET_USER,
   GET_USER_AVATAR,
@@ -8,6 +9,8 @@ import { usersRef, avatarsRef } from '../api/firebase';
 
 const FAV_LIST = 'favlist';
 const USERNAME = 'username';
+const RECENTS = 'recents';
+const MAX_RECENTS = 10;
 
 // Create new user
 export const createUser = (uid, username) => dispatch => {
@@ -84,4 +87,46 @@ export const removeAnimeFromUser = (uid, anime) => dispatch => {
     .child(FAV_LIST)
     .child(anime.info.id)
     .remove();
+};
+
+export const addAnimeToRecents = (uid, anime) => dispatch => {
+  let ani = {
+    id: anime.info.id,
+    title: anime.info.title,
+    poster: anime.poster,
+    type: anime.info.type,
+    date: Date.now()
+  };
+  usersRef
+    .child(uid)
+    .child(RECENTS)
+    .once('value', snapshot => {
+      let recents = Object.values(snapshot.val());
+      if (recents.length < MAX_RECENTS) {
+        usersRef
+          .child(uid)
+          .child(RECENTS)
+          .child(ani.id)
+          .set(ani);
+      } else {
+        let sorted = _.orderBy(recents, ['date'], ['desc']);
+        if (
+          _.findIndex(sorted, el => {
+            return el.id === ani.id;
+          }) === -1
+        ) {
+          usersRef
+            .child(uid)
+            .child(RECENTS)
+            .child(sorted[sorted.length - 1].id)
+            .remove();
+        }
+
+        usersRef
+          .child(uid)
+          .child(RECENTS)
+          .child(ani.id)
+          .set(ani);
+      }
+    });
 };

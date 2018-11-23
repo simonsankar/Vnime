@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   getEpisodeOptions,
   resetEpisodeOptions
-} from "../actions/getEpisodeOptions";
-import { selectEpisode, resetSelectedVideo } from "../actions/selectEpisode";
-import { Label, Popup } from "semantic-ui-react";
+} from '../actions/getEpisodeOptions';
+import { selectEpisode, resetSelectedVideo } from '../actions/selectEpisode';
+import { Label, Popup } from 'semantic-ui-react';
 
 class Episode extends Component {
   handleEpisode(index, episode, slug) {
@@ -28,8 +28,8 @@ class Episode extends Component {
             basic
             className={
               this.props.selectedEpisode.index === episode.info.episode
-                ? "label-blue-selected"
-                : "label-blue"
+                ? 'label-blue-selected'
+                : 'label-blue'
             }
             onClick={() => this.handleEpisode(index, episode, slug)}
           >

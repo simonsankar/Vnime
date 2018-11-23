@@ -7,6 +7,7 @@ import { getUser, getUserAvatar } from '../actions/getUser';
 import { Grid, Label, Header, Radio, Icon, Image } from 'semantic-ui-react';
 import DashboardList from './DashboardList';
 import EditProfileModal from './EditProfileModal';
+import RecentlyViewed from './RecentlyViewed';
 
 class Dashboard extends Component {
   state = { checked: false };
@@ -66,19 +67,17 @@ class Dashboard extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column width={12}>
+          <Grid.Column width={11}>
             {user !== null && user.favlist !== undefined ? (
-              <Header>
+              <Header className="dashboard-header">
+                Favlist{' '}
                 <Radio
+                  className="pullright"
                   slider
                   label="Edit list"
                   onChange={this.toggleRemove}
                   checked={checked}
                 />
-                <Label className="pullright">
-                  <Icon name="tv" />
-                  {Object.values(user.favlist).length}
-                </Label>
               </Header>
             ) : (
               ''
@@ -102,7 +101,13 @@ class Dashboard extends Component {
               )}
             </Grid>
           </Grid.Column>
-          <Grid.Column width={4}>Last Watched</Grid.Column>
+          <Grid.Column width={5}>
+            {user !== null && user.recents !== undefined ? (
+              <RecentlyViewed recents={user.recents} />
+            ) : (
+              'No recents'
+            )}
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     );

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getAnime, resetAnime } from '../actions/getAnime';
 import { resetEpisodeOptions } from '../actions/getEpisodeOptions';
 import { resetVideo } from '../actions/selectVideo';
+import { addAnimeToRecents } from '../actions/getUser';
 
 import { Grid, Segment, Dimmer, Loader } from 'semantic-ui-react';
 import Hero from './Hero';
@@ -29,6 +30,14 @@ class Watch extends Component {
       this.props.resetEpisodeOptions();
       const { pathname } = this.props.location;
       this.props.getAnime(pathname.replace('/watch/', ''));
+    }
+    // Adding to recently viewed
+    const { auth, anime } = this.props;
+    if (prevProps.anime === null && anime) {
+      if (auth !== null && auth.loggedIn && anime !== null) {
+        console.log('Going to add to recents', auth.response.uid, anime);
+        this.props.addAnimeToRecents(auth.response.uid, anime);
+      }
     }
   }
   componentWillUnmount() {
@@ -72,10 +81,16 @@ class Watch extends Component {
   }
 }
 
-const mapStateToProps = ({ anime }) => ({ anime });
+const mapStateToProps = ({ anime, auth }) => ({ anime, auth });
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { getAnime, resetAnime, resetEpisodeOptions, resetVideo },
+    {
+      getAnime,
+      addAnimeToRecents,
+      resetAnime,
+      resetEpisodeOptions,
+      resetVideo
+    },
     dispatch
   );
 export default withRouter(

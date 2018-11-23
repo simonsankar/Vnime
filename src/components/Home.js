@@ -132,8 +132,8 @@ class Home extends Component {
                     speed: 1
                   },
                   repulse: {
-                    distance: 400,
-                    duration: 0.4
+                    distance: 30,
+                    duration: 2
                   },
                   push: {
                     particles_nb: 4

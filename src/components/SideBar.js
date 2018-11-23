@@ -6,7 +6,7 @@ import { logoutUser } from '../actions/setAuth';
 
 import { createMemoryHistory } from 'history';
 
-import { Menu, Button, Popup } from 'semantic-ui-react';
+import { Menu, Button, Popup, Icon } from 'semantic-ui-react';
 import SearchBar from './SearchBar';
 
 class SideBar extends Component {
@@ -21,13 +21,23 @@ class SideBar extends Component {
 
   render() {
     const activeItem = this.props.location.pathname.replace('/', '');
-    const { auth, logoutUser } = this.props;
+    const { auth, user, logoutUser } = this.props;
 
     return (
       <Menu secondary vertical fixed="left" inverted className="side-bar">
         <Menu.Item className="menu-item-header draggable">
           <Menu.Header className="menu-header">
-            VNIME
+            {auth !== null && auth.loggedIn && user !== null ? (
+              <span>
+                <Icon name="user circle" />
+                <em>{user.username.toUpperCase()}</em>
+              </span>
+            ) : (
+              <span>
+                <Icon name="vuejs" />
+                VNIME
+              </span>
+            )}
             <Button
               disabled={
                 this.props.history.index === this.props.history.length - 1
@@ -152,7 +162,7 @@ class SideBar extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => ({ auth });
+const mapStateToProps = ({ auth, user }) => ({ auth, user });
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ logoutUser }, dispatch);
 
