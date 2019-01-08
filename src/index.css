@@ -444,7 +444,7 @@ h6 {
   color: rgba(255, 255, 255, 0.7);
   position: relative;
   min-height: calc(100vh - 31px);
-  padding: 70px 70px 70px 99px !important;
+  padding: 70px 70px 70px 70px !important;
 }
 .home-section-primary {
   background-color: #38597c;
