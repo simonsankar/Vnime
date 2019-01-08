@@ -2,6 +2,8 @@
 An anime streaming desktop app using Electron/ReactJS/Firebase.
 Anime sources are from masterani.me
 
+![alt](https://raw.githubusercontent.com/simonsankar/Vnime/master/Screen.png)
+
 Add link to beta version here.
 
 ## TODO
