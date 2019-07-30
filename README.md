@@ -1,6 +1,6 @@
 # Vnime
 An anime streaming desktop app using Electron/ReactJS/Firebase.
-Anime sources are from masterani.me
+Anime sources are from masterani.me which has shut down so no content anymore :(
 
 ![alt](https://raw.githubusercontent.com/simonsankar/Vnime/master/Screen.png)
 
